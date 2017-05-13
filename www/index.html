@@ -3,18 +3,31 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		
 		<script src="cordova.js"></script>
+		
 		<script src="js/jquery-2.1.4.min.js"></script>
 		<script src="js/jquery.mobile-1.4.5.min.js"></script>
+		
+		<script src="js/prototypes/Product.js"></script>
+		<script src="js/prototypes/ProductsList.js"></script>
+		
+		<script type="text/javascript">
+			var productsListData = new ProductsList();
+		</script>
+		
+		<script src="js/products-form-functions.js"></script>
 		<script src="js/products-data-functions.js"></script>
-		<script src="js/include-html.js"></script>
+		<script src="js/products-list-draw-functions.js"></script>
+		<script src="js/products-list-data-functions.js"></script>
+		
 		<script src="js/initialize.js"></script>
 	</head>
 	<body onload="init()">
 
 	<!-------------------------------------------------------------------------------->
 	
-		<div data-role="page" id="mainPage">
+		<div id="mainPage" data-role="page">
 			<div data-role="header">
 				<h1>Shop Alert</h1>
 			</div>
@@ -26,22 +39,65 @@
 	
 	<!-------------------------------------------------------------------------------->
 		
-		<div data-role="page" id="createListMainPage">
+		<div id="createListMainPage" data-role="page">
 			<div data-role="header">
 				<a href="#mainPage" class="ui-btn">Back</a>
 				<h1>Shop Alert</h1>
+				<button id="createListButtonClear" type="button">Clear</button>
 				<div>
 					<span>New list</span>
 				</div>
 			</div>
 			<div data-role="main" class="ui-content">
 				
+				<div id="shopListForm">
+				
+					<textarea id="mainComment" type="text" placeholder="Notes..."></textarea>
+					
+					<div class="ui-corner-all custom-corners">
+						<div class="ui-bar ui-bar-a">
+							<h3>Products</h3>
+						</div>
+						<div id="currentProductsList" class="list ui-body ui-body-a"></div>
+					</div>
+					
+					<a id="createListButtonAddProduct" href="#popupEditProduct" data-rel="popup" class="ui-btn">Add product</a>
+					
+					<button id="createListButtonSend" type="button">Send</button>
+				</div>
+
+			</div>
+			
+			<div data-role="popup" id="popupEditProduct">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Product</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<input id="editProductName" type="text" placeholder="Product name..."/>
+					<select id="editProductSelectGroups"></select>
+					<select id="editProductSelectProducts"></select>
+					<input id="editProductQuantity" type="number" placeholder="Product quantity..." min="1" value="1"/>
+					<fieldset id="editProductPriority" data-role="controlgroup" data-type="horizontal">
+						<legend>Priority</legend>
+						<input id="editProductPriorityLow" name="priority" value="0" type="radio">
+						<label for="editProductPriorityLow">Low</label>
+						<input id="editProductPriorityNormal" name="priority" value="1" checked="checked" type="radio">
+						<label for="editProductPriorityNormal">Normal</label>
+						<input id="editProductPriorityImportant" name="priority" value="2" type="radio">
+						<label for="editProductPriorityImportant">Important</label>
+						<input id="editProductPriorityNecessary" name="priority" value="3" type="radio">
+						<label for="editProductPriorityNecessary">Necessary</label>
+					</fieldset>
+					<input id="editProductComment" type="text" placeholder="Product comment..."/>
+					<button id="editProductSave" type="button">Save</button>
+				</div>
 			</div>
 		</div>
 	
 	<!-------------------------------------------------------------------------------->
 	
-		<div data-role="page" id="listsPage">
+		<div id="listsPage" data-role="page">
 			<div data-role="header">
 				<a href="#mainPage" class="ui-btn">Back</a>
 				<h1>Shop Alert</h1>

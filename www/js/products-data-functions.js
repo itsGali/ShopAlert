@@ -23,7 +23,7 @@ function checkConnection() {
 
 function isUpdateTime() {
 	
-	var lastUpdateDate = localStorage.getItem("product_last_update");
+	var lastUpdateDate = localStorage.getItem("products_last_update");
 	
 	if (lastUpdateDate === null) {
 		return true;
@@ -44,13 +44,7 @@ function isUpdateTime() {
 
 function saveProductsData(data) {
 	
-	localStorage.setItem('product_data', JSON.stringify(data));
-	
-}
-
-function setProductsList() {
-	
-	
+	localStorage.setItem('products_data', JSON.stringify(data));
 	
 }
 
@@ -69,7 +63,8 @@ function loadProductsData() {
 			
 			if (result.status == 'success') {
 				saveProductsData(result.data);
-				setProductsList();
+				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+				initProductsSelectList();
 			} else {
 				setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			}
@@ -92,13 +87,4 @@ function tryLoadProductsData() {
 		setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 	}
 
-}
-
-function getProductsDataOnStart() {
-	
-	setProductsList();
-	if (isUpdateTime()) {
-		tryLoadProductsData();
-	}
-	
 }
