@@ -85,7 +85,7 @@ function loadProductsData() {
 				logger.log('net', 'load success');
 				saveProductsData(result.data);
 //				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
-//				initProductsSelectList();
+				initProductsSelectList();
 			//	$("#messagesMainPage .internetConnectionError").hide();
 			} else {
 				logger.log('net', 'load server error');
