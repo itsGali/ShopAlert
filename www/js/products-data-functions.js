@@ -79,19 +79,22 @@ function loadProductsData() {
 		success: function(result) {
 			
 			if (result.status == 'success') {
-				saveProductsData(result.data);
-				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
-				initProductsSelectList();
-				$("#messagesMainPage .internetConnectionError").hide();
+				logger.log('load success');
+			//	saveProductsData(result.data);
+			//	localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+			//	initProductsSelectList();
+			//	$("#messagesMainPage .internetConnectionError").hide();
 			} else {
-				$("#messagesMainPage .internetConnectionError").show();
-				setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+				logger.log('load server error');
+			//	$("#messagesMainPage .internetConnectionError").show();
+			//	setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			}
 			
 		},
 		error: function(error) {
-			$("#messagesMainPage .internetConnectionError").show();
-			setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+			logger.log('load connection error');
+			//$("#messagesMainPage .internetConnectionError").show();
+			//setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 		}
 	});
 	

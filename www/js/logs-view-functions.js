@@ -3,10 +3,10 @@ function logViewDrawLogs() {
 	$("#logsTable tbody").empty();
 	$.each(logger.logs, function(key, value) {
 		var time = $("<td/>", {
-			text: value.type
+			text: value.date.toString()
 		});
 		var type = $("<td/>", {
-			text: value.date.toString()
+			text: value.type
 		});
 		var message = $("<td/>", {
 			text: value.message
