@@ -6,8 +6,10 @@ $(document).ready(function () {
 		document.addEventListener("deviceready", function() {
 	
 			if (checkConnection()) {
+				logger.log('connection');
 				loadProductsData();
 			} else {
+				logger.log('no connection');
 				document.addEventListener("online", loadProductsData, false);
 			}
 	

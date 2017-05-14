@@ -66,7 +66,7 @@ function saveProductsData(data) {
 }
 
 function loadProductsData() {
-	
+	logger.log('try load');
 	var url = 'http://mgalant.myftp.org:8081/shop_alert/api.php';
 	
 	$.ajax({
