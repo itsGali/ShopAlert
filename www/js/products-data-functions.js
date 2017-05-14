@@ -70,35 +70,46 @@ function saveProductsData(data) {
 function loadProductsData() {
 	
 	logger.log('net', 'try load');
-	var url = 'http://mgalant.myftp.org:8081/shop_alert/api.php';
 	
-	$.ajax({
-		dataType: "json",
-		crossOrigin: true,
-		url: url,
-		data: {
-			type: "all"
-		},
-		success: function(result) {
-			
-			if (result.status == 'success') {
-				logger.log('net', 'load success');
-				saveProductsData(result.data);
-//				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
-				initProductsSelectList();
-			//	$("#messagesMainPage .internetConnectionError").hide();
-			} else {
-				logger.log('net', 'load server error');
-			//	$("#messagesMainPage .internetConnectionError").show();
-			//	setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+	if (isUpdateTime()) {
+		
+		logger.log('storage', 'is update time');
+	
+		var url = 'http://mgalant.myftp.org:8081/shop_alert/api.php';
+		
+		$.ajax({
+			dataType: "json",
+			crossOrigin: true,
+			url: url,
+			data: {
+				type: "all"
+			},
+			success: function(result) {
+				
+				if (result.status == 'success') {
+					logger.log('net', 'load success');
+					saveProductsData(result.data);
+//					localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+					initProductsSelectList();
+				//	$("#messagesMainPage .internetConnectionError").hide();
+				} else {
+					logger.log('net', 'load server error');
+				//	$("#messagesMainPage .internetConnectionError").show();
+				//	setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+				}
+				
+			},
+			error: function(error) {
+				logger.log('net', 'load connection error - ' + JSON.stringify(error));
+				//$("#messagesMainPage .internetConnectionError").show();
+				//setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			}
-			
-		},
-		error: function(error) {
-			logger.log('net', 'load connection error - ' + JSON.stringify(error));
-			//$("#messagesMainPage .internetConnectionError").show();
-			//setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
-		}
-	});
+		});
+		
+	} else {
+		
+		logger.log('storage', 'no update time');
+		
+	}
 	
 }

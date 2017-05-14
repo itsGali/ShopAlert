@@ -1,4 +1,5 @@
 function initProductsSelectList() {
+	
 	logger.log('form', 'start init products list');
 	var productsData = localStorage.getItem("products_data");
 	if (productsData !== null) {
@@ -28,6 +29,7 @@ function initProductsSelectList() {
 		}
 	}
 	logger.log('form', 'end init products list');
+	
 }
 
 function updateProductsSelectList(groupId) {
