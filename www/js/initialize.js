@@ -1,4 +1,4 @@
-$(document).ready(function() {
+$(document).bind('pageinit', function () {
 	
 //	const ENABLE_LOGS = true;
 //	
