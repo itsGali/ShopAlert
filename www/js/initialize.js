@@ -66,7 +66,6 @@ function initializeNumberList() {
 	
 	var options = new ContactFindOptions();
 	options.multiple = true;
-	options.desiredFields = [navigator.contacts.fieldType.id];
 	options.hasPhoneNumber = true;
 	var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.phoneNumbers];
 	navigator.contacts.find(fields, contactSuccess, contactError, options);
@@ -89,6 +88,19 @@ function contactError() {
 
 function contactSuccess(contacts) {
 	
-	logger.log('contactList', 'contact list success ' + JSON.stringify(contacts[0]));
+	logger.log('contactList', JSON.stringify(contacts[0].id));
+	logger.log('contactList', JSON.stringify(contacts[0].displayName));
+	logger.log('contactList', JSON.stringify(contacts[0].name));
+	logger.log('contactList', JSON.stringify(contacts[0].nickname));
+	logger.log('contactList', JSON.stringify(contacts[0].phoneNumbers));
+	logger.log('contactList', JSON.stringify(contacts[0].emails));
+	logger.log('contactList', JSON.stringify(contacts[0].addresses));
+	logger.log('contactList', JSON.stringify(contacts[0].ims));
+	logger.log('contactList', JSON.stringify(contacts[0].organizations));
+	logger.log('contactList', JSON.stringify(contacts[0].birthday));
+	logger.log('contactList', JSON.stringify(contacts[0].note));
+	logger.log('contactList', JSON.stringify(contacts[0].photos));
+	logger.log('contactList', JSON.stringify(contacts[0].categories));
+	logger.log('contactList', JSON.stringify(contacts[0].urls));
 	
 }
