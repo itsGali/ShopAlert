@@ -4,7 +4,6 @@ var connectionsCounter = 0;
 function getConnectionInterval() {
 	
 	connectionsCounter++;
-	logger.log('net', 'get interval ' + connectionsCounter);
 	if (connectionsCounter < 20) {
 		return 3000;
 	} else if (connectionsCounter < 50) {
@@ -17,22 +16,14 @@ function getConnectionInterval() {
 
 function checkConnection() {
 	
-	logger.log('net', 'try check internet connection');
 	try {
-		logger.log('net', 'start check connection');
 		var networkState = navigator.connection.type;
-		//logger.log('net', 'network state set to ' + networkState);
-		//logger.log('net', 'connection state none = ' + Connection.NONE);
 		if (networkState == Connection.NONE) {
-			logger.log('net', 'network connection disable');
 			return false;
 		}
-		logger.log('net', 'network connection enable');
 		return true;
 	}
 	catch(err) {
-		logger.log('net', 'check network connection error');
-		//logger.log('net', 'check network connection error ' + err);
 		return false;
 	}
 	
@@ -41,12 +32,9 @@ function checkConnection() {
 
 function checkDataStorage() {
 	
-	logger.log('storage', 'try check storage');
 	if (typeof(Storage) !== "undefined") {
-		logger.log('storage', 'storage enabled');
 		return true;
 	}
-	logger.log('storage', 'storage disabled');
 	return false;
 	
 }
