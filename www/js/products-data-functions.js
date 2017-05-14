@@ -92,7 +92,7 @@ function loadProductsData() {
 			
 		},
 		error: function(error) {
-			logger.log('load connection error - ' + error);
+			logger.log('load connection error - ' + JSON.stringify(error));
 			//$("#messagesMainPage .internetConnectionError").show();
 			//setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 		}
