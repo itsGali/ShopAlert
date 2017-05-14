@@ -68,25 +68,19 @@ function initializeNumberList() {
 	options.multiple = true;
 	options.hasPhoneNumber = true;
 	var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.phoneNumbers];
-	navigator.contacts.find(fields, contactSuccess, contactError, options);
-	
-//	createProductsListDrawNumberList(
-//		[
-//			{name: "A", number: "123"},
-//			{name: "B", number: "456"},
-//			{name: "C", number: "789"},
-//		]
-//	);
+	navigator.contacts.find(fields, loadContactsSuccess, loadContactsError, options);
 	
 }
 
-function contactError() {
+function loadContactsError() {
 	
 	logger.log('contactList', 'contact list error');
 	
 }
 
-function contactSuccess(contacts) {
+function loadContactsSuccess(contacts) {
+	
+	createProductsListDrawNumberList(contacts);
 	
 	logger.log('contactList', JSON.stringify(contacts[0].id));
 	logger.log('contactList', JSON.stringify(contacts[0].displayName));
