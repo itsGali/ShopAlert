@@ -98,8 +98,8 @@ function createProductsListDrawNumberList(contacts) {
 			$.each(numbers, function(key, value) {
 				var number = value.value;
 				$("<option/>", {
-					value: value.number,
-					text: value.name
+					value: number,
+					text: name
 				}).appendTo("#selectPhoneNumbers");
 			});
 			
