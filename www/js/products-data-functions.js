@@ -16,17 +16,21 @@ function getConnectionInterval() {
 
 function checkConnection() {
 	
+	logger.log('net', 'try check internet connection');
 	try {
+		logger.log('net', 'start check connection');
 		var networkState = navigator.connection.type;
 		if (networkState == Connection.NONE) {
+			logger.log('net', 'network connection disable');
 			return false;
 		}
+		logger.log('net', 'network connection enable');
 		return true;
 	}
 	catch(err) {
+		logger.log('net', 'check network connection error');
 		return false;
 	}
-	
 	
 }
 

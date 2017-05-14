@@ -36,5 +36,5 @@ $(document).bind('pageinit', function () {
 	})
 	
 	createProductsListDraw(productsListData);
-	logger.log('test', 'test');
+
 });
