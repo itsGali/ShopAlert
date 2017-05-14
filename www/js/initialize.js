@@ -1,17 +1,10 @@
 $(document).bind('pageinit', function () {
-	
-//	const ENABLE_LOGS = true;
-//	
-//	if (ENABLE_LOGS) {
-//		logger.addLogsButton();
-//		logger.log('main', 'logs on');
-//	}
 
 	if (checkDataStorage()) {
 		initProductsSelectList();
-		if (isUpdateTime()) {
-			tryLoadProductsData(tryLoadCounter++);
-		}
+		//if (isUpdateTime()) {
+			tryLoadProductsData();
+		//}
 	} else {
 		$("#messagesMainPage .dataStorageError").show();
 		$("#editProductSelectGroups").parent().hide();

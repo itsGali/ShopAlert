@@ -1,6 +1,5 @@
 function initProductsSelectList() {
 	
-	logger.log('main', 'init select list');
 	var productsData = localStorage.getItem("products_data");
 	if (productsData !== null) {
 		var productsData = JSON.parse(productsData);
