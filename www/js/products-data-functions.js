@@ -20,6 +20,8 @@ function checkConnection() {
 	try {
 		logger.log('net', 'start check connection');
 		var networkState = navigator.connection.type;
+		logger.log('net', 'network state set to ' + networkState);
+		logger.log('net', 'connection state none = ' + Connection.NONE);
 		if (networkState == Connection.NONE) {
 			logger.log('net', 'network connection disable');
 			return false;
@@ -36,9 +38,12 @@ function checkConnection() {
 
 function checkDataStorage() {
 	
+	logger.log('storage', 'try check storage');
 	if (typeof(Storage) !== "undefined") {
+		logger.log('storage', 'storage enabled');
 		return true;
 	}
+	logger.log('storage', 'storage disabled');
 	return false;
 	
 }

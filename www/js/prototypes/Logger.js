@@ -10,7 +10,6 @@ function Logger() {
 		};
 		
 		this.logs.push(log);
-		console.log(this.logs);
 	};
 	
 }
