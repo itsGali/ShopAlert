@@ -66,6 +66,7 @@ function saveProductsData(data) {
 }
 
 function loadProductsData() {
+	
 	logger.log('try load');
 	var url = 'http://mgalant.myftp.org:8081/shop_alert/api.php';
 	
@@ -80,9 +81,9 @@ function loadProductsData() {
 			
 			if (result.status == 'success') {
 				logger.log('load success');
-			//	saveProductsData(result.data);
-			//	localStorage.setItem('products_last_update', JSON.stringify(new Date()));
-			//	initProductsSelectList();
+				saveProductsData(result.data);
+				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+				initProductsSelectList();
 			//	$("#messagesMainPage .internetConnectionError").hide();
 			} else {
 				logger.log('load server error');
