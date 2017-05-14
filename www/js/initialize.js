@@ -31,6 +31,10 @@ $(document).bind('pageinit', function () {
 		productDataClear();
 	});
 	
-	createProductsListDraw(productsListData);
+	$("#buttonLogsViewLink").click(function() {
+		logViewDrawLogs();
+	})
 	
+	createProductsListDraw(productsListData);
+
 });
