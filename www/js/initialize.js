@@ -80,7 +80,7 @@ function loadContactsError() {
 
 function loadContactsSuccess(contacts) {
 	
-	myObject.results.sort(function (a, b) {
+	contacts.sort(function (a, b) {
 		if (a.displayName < b.displayName) {
 			return 1;
 		}
