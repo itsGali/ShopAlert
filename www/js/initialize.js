@@ -68,7 +68,7 @@ function initializeNumberList() {
 	options.multiple = true;
 	options.desiredFields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.phoneNumbers];
 	options.hasPhoneNumber = true;
-	var fields = [];
+	var fields = [navigator.contacts.fieldType.displayName];
 	navigator.contacts.find(fields, contactSuccess, contactError, options);
 	
 //	createProductsListDrawNumberList(
