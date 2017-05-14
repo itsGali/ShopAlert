@@ -16,21 +16,14 @@ function getConnectionInterval() {
 
 function checkConnection() {
 	
-	logger.log('net', 'try check internet connection');
 	try {
-		logger.log('net', 'start check connection');
 		var networkState = navigator.connection.type;
-		logger.log('net', 'network state set to ' + networkState);
-		logger.log('net', 'connection state none = ' + Connection.NONE);
 		if (networkState == Connection.NONE) {
-			logger.log('net', 'network connection disable');
 			return false;
 		}
-		logger.log('net', 'network connection enable');
 		return true;
 	}
 	catch(err) {
-		logger.log('net', 'check network connection error');
 		return false;
 	}
 	
@@ -38,12 +31,9 @@ function checkConnection() {
 
 function checkDataStorage() {
 	
-	logger.log('storage', 'try check storage');
 	if (typeof(Storage) !== "undefined") {
-		logger.log('storage', 'storage enabled');
 		return true;
 	}
-	logger.log('storage', 'storage disabled');
 	return false;
 	
 }
@@ -105,15 +95,4 @@ function loadProductsData() {
 		}
 	});
 	
-}
-
-	
-function tryLoadProductsData() {
-	if (checkConnection()) {
-		loadProductsData();
-	} else {
-		$("#messagesMainPage .internetConnectionError").show();
-		document.addEventListener("online", loadProductsData, false);
-	}
-
 }

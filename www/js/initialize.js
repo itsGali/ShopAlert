@@ -1,14 +1,24 @@
 $(document).ready(function () {
 	
 	if (checkDataStorage()) {
+		
 		initProductsSelectList();
-		//if (isUpdateTime()) {
-			tryLoadProductsData();
-		//}
+		document.addEventListener("deviceready", function() {
+	
+			if (checkConnection()) {
+				loadProductsData();
+			} else {
+				document.addEventListener("online", loadProductsData, false);
+			}
+	
+		}, false);
+	
 	} else {
+	
 		$("#messagesMainPage .dataStorageError").show();
 		$("#editProductSelectGroups").parent().hide();
 		$("#editProductSelectProducts").parent().hide();
+	
 	}
 	
 });
