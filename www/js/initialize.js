@@ -1,15 +1,32 @@
-$(document).bind('pageinit', function () {
-
+$(document).ready(function () {
+	
 	if (checkDataStorage()) {
+		
 		initProductsSelectList();
-		//if (isUpdateTime()) {
-			tryLoadProductsData();
-		//}
+		document.addEventListener("deviceready", function() {
+	
+			if (checkConnection()) {
+				logger.log('net', 'connection');
+				loadProductsData();
+			} else {
+				logger.log('net', 'no connection');
+				$("#messagesMainPage .internetConnectionError").show();
+				document.addEventListener("online", loadProductsData, false);
+			}
+	
+		}, false);
+	
 	} else {
+	
 		$("#messagesMainPage .dataStorageError").show();
 		$("#editProductSelectGroups").parent().hide();
 		$("#editProductSelectProducts").parent().hide();
+	
 	}
+	
+});
+
+$(document).bind('pageinit', function () {
 	
 	$("#editProductSelectGroups").change(function() {
 		updateProductsSelectList($(this).val());
@@ -31,6 +48,10 @@ $(document).bind('pageinit', function () {
 		productDataClear();
 	});
 	
-	createProductsListDraw(productsListData);
+	$("#buttonLogsViewLink").click(function() {
+		logViewDrawLogs();
+	})
 	
+	createProductsListDraw(productsListData);
+
 });

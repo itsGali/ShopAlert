@@ -1,8 +1,10 @@
 function initProductsSelectList() {
 	
+	logger.log('form', 'start init products list');
 	var productsData = localStorage.getItem("products_data");
 	if (productsData !== null) {
 		var productsData = JSON.parse(productsData);
+		logger.log('form', 'groups ' + productsData.length);
 		if (productsData.length > 0) {
 			
 			$.each(productsData, function(key, value) {
@@ -13,6 +15,7 @@ function initProductsSelectList() {
 			});
 			
 			var products = productsData[0].products;
+			logger.log('form', 'products ' + products.length);
 			$("#editProductSelectProducts").empty();
 			if (products.length > 0) {
 				$.each(products, function(key, value) {
@@ -25,6 +28,7 @@ function initProductsSelectList() {
 			
 		}
 	}
+	logger.log('form', 'end init products list');
 	
 }
 

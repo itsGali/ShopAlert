@@ -2,6 +2,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
+		<meta http-equiv="Content-Security-Policy" content="default-src *; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; media-src *; img-src 'self' data:">
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
 		<link rel="stylesheet" href="css/init.css" />
 		
@@ -12,15 +13,18 @@
 		
 		<script src="js/prototypes/Product.js"></script>
 		<script src="js/prototypes/ProductsList.js"></script>
+		<script src="js/prototypes/Logger.js"></script>
 		
 		<script type="text/javascript">
 			var productsListData = new ProductsList();
+			var logger = new Logger();
 		</script>
 		
 		<script src="js/products-form-functions.js"></script>
 		<script src="js/products-data-functions.js"></script>
 		<script src="js/products-list-draw-functions.js"></script>
 		<script src="js/products-list-data-functions.js"></script>
+		<script src="js/logs-view-functions.js"></script>
 		
 		<script src="js/initialize.js"></script>
 	</head>
@@ -35,6 +39,7 @@
 			<div data-role="main" class="ui-content">
 				<a href="#createListMainPage" class="ui-btn">Create list</a>
 				<a href="#listsPage" class="ui-btn">My lists</a>
+				<a id="buttonLogsViewLink" href="#logsPage" class="ui-btn">Logs</a>
 				
 				<div id="messagesMainPage">
 					<div class="internetConnectionError">
@@ -123,6 +128,30 @@
 			</div>
 			<div data-role="main" class="ui-content">
 				
+			</div>
+		</div>
+	
+	<!-------------------------------------------------------------------------------->
+	
+		<div id="logsPage" data-role="page">
+			<div data-role="header">
+				<a href="#mainPage" class="ui-btn">Back</a>
+				<h1>Shop Alert</h1>
+				<div>
+					<span>Logs</span>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<table id="logsTable" data-role="table" class="ui-responsive">
+				<thead>
+					<th>Time</th>
+					<th>Type</th>
+					<th>Message</th>
+				</thead>
+				<tbody>
+					
+				</tbody>
+				</table>
 			</div>
 		</div>
 	
