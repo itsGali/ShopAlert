@@ -85,17 +85,26 @@ function createProductsListDrawProduct(product) {
 	
 }
 
-function createProductsListDrawNumberList(numbers) {
+function createProductsListDrawNumberList(contacts) {
 	
 	$("#selectPhoneNumbers").empty();
 	$("#selectPhoneNumbers").val('');
-	if (numbers.length > 0) {
-		$.each(numbers, function(key, value) {
-			$("<option/>", {
-				value: value.number,
-				text: value.name
-			}).appendTo("#selectPhoneNumbers");
+	if (contacts.length > 0) {
+		
+		$.each(contacts, function(key, value) {
+			var name = value.displayName;
+			var numbers = value.phoneNumbers;
+			
+			$.each(numbers, function(key, value) {
+				var number = value.value;
+				$("<option/>", {
+					value: value.number,
+					text: value.name
+				}).appendTo("#selectPhoneNumbers");
+			});
+			
 		});
+		
 	}
 	
 }
