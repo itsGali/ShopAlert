@@ -80,12 +80,17 @@ function loadContactsError() {
 
 function loadContactsSuccess(contacts) {
 	
+	logger.log('contactList', 'contact list success');
+	logger.log('contactList', JSON.stringify(contacts[0].id));
+	logger.log('contactList', JSON.stringify(contacts[0].displayName));
+	logger.log('contactList', JSON.stringify(contacts[0].phoneNumbers));
+	
 	contacts.sort(function (a, b) {
 		if (a.displayName < b.displayName) {
-			return 1;
+			return -1;
 		}
 		if (a.displayName > b.displayName) {
-			return -1;
+			return 1;
 		}
 		if (a.displayName == b.displayName) {
 			return 0;
@@ -93,20 +98,5 @@ function loadContactsSuccess(contacts) {
 	});
 	
 	createProductsListDrawNumberList(contacts);
-	
-	logger.log('contactList', JSON.stringify(contacts[0].id));
-	logger.log('contactList', JSON.stringify(contacts[0].displayName));
-	logger.log('contactList', JSON.stringify(contacts[0].name));
-	logger.log('contactList', JSON.stringify(contacts[0].nickname));
-	logger.log('contactList', JSON.stringify(contacts[0].phoneNumbers));
-	logger.log('contactList', JSON.stringify(contacts[0].emails));
-	logger.log('contactList', JSON.stringify(contacts[0].addresses));
-	logger.log('contactList', JSON.stringify(contacts[0].ims));
-	logger.log('contactList', JSON.stringify(contacts[0].organizations));
-	logger.log('contactList', JSON.stringify(contacts[0].birthday));
-	logger.log('contactList', JSON.stringify(contacts[0].note));
-	logger.log('contactList', JSON.stringify(contacts[0].photos));
-	logger.log('contactList', JSON.stringify(contacts[0].categories));
-	logger.log('contactList', JSON.stringify(contacts[0].urls));
 	
 }
