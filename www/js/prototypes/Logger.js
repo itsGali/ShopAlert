@@ -1,13 +1,13 @@
 function Logger() {
 	
-	this.addLogsButton = function() {
-		$("<a/>", {
-			class: "ui-btn",
-			text: "Logs"
-		})
-		.attr("href", "#logsPage")
-		.appendTo("#logsButton");
-	};
+//	this.addLogsButton = function() {
+//		$("<a/>", {
+//			class: "ui-btn",
+//			text: "Logs"
+//		})
+//		.attr("href", "#logsPage")
+//		.appendTo("#logsButton");
+//	};
 	
 	this.log = function(type, message, level = 0) {
 		var time = $("<td/>", {

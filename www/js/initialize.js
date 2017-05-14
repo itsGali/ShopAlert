@@ -1,18 +1,17 @@
-$(document).bind('pageinit', function () {
-//$(document).ready(function() {
+$(document).ready(function() {
 	
-	const ENABLE_LOGS = true;
-	
-	if (ENABLE_LOGS) {
-		logger.addLogsButton();
-		logger.log('main', 'logs on');
-	}
+//	const ENABLE_LOGS = true;
+//	
+//	if (ENABLE_LOGS) {
+//		logger.addLogsButton();
+//		logger.log('main', 'logs on');
+//	}
 
 	if (checkDataStorage()) {
 		initProductsSelectList();
-		//if (isUpdateTime()) {
+		if (isUpdateTime()) {
 			tryLoadProductsData(tryLoadCounter++);
-		//}
+		}
 	} else {
 		$("#messagesMainPage .dataStorageError").show();
 		$("#editProductSelectGroups").parent().hide();
