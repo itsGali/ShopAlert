@@ -5,3 +5,7 @@
 #messagesMainPage .dataStorageError {
 	display: none;
 }
+
+#messagesMainPage .apiServerError {
+	display: none;
+}

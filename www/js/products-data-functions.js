@@ -78,15 +78,17 @@ function loadProductsData() {
 					localStorage.setItem('products_last_update', JSON.stringify(new Date()));
 					initProductsSelectList();
 					$("#messagesMainPage .internetConnectionError").hide();
+					$("#messagesMainPage .apiServerError").hide();
 				} else {
 					logger.log('net', 'load server error');
-					$("#messagesMainPage .internetConnectionError").show();
+					$("#messagesMainPage .apiServerError").show();
 				}
 				
 			},
 			error: function(error) {
 				logger.log('net', 'load connection error - ' + JSON.stringify(error));
 				$("#messagesMainPage .internetConnectionError").show();
+				$("#messagesMainPage .apiServerError").hide();
 			}
 		});
 		
