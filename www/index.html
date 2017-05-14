@@ -12,9 +12,11 @@
 		
 		<script src="js/prototypes/Product.js"></script>
 		<script src="js/prototypes/ProductsList.js"></script>
+		<script src="js/prototypes/Logger.js"></script>
 		
 		<script type="text/javascript">
 			var productsListData = new ProductsList();
+			var logger = new Logger();
 		</script>
 		
 		<script src="js/products-form-functions.js"></script>
@@ -35,6 +37,7 @@
 			<div data-role="main" class="ui-content">
 				<a href="#createListMainPage" class="ui-btn">Create list</a>
 				<a href="#listsPage" class="ui-btn">My lists</a>
+				<a href="#logsPage" class="ui-btn">Logs</a>
 				
 				<div id="messagesMainPage">
 					<div class="internetConnectionError">
@@ -123,6 +126,30 @@
 			</div>
 			<div data-role="main" class="ui-content">
 				
+			</div>
+		</div>
+	
+	<!-------------------------------------------------------------------------------->
+	
+		<div id="logsPage" data-role="page">
+			<div data-role="header">
+				<a href="#mainPage" class="ui-btn">Back</a>
+				<h1>Shop Alert</h1>
+				<div>
+					<span>Logs</span>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<table id="logsTable" data-role="table" class="ui-responsive">
+				<thead>
+					<th>Time</th>
+					<th>Type</th>
+					<th>Message</th>
+				</thead>
+				<tbody>
+					
+				</tbody>
+				</table>
 			</div>
 		</div>
 	
