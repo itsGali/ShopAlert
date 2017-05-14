@@ -61,13 +61,16 @@ function isUpdateTime() {
 
 function saveProductsData(data) {
 	
+	logger.log('storage', 'start save');
+	logger.log('storage', JSON.stringify(data));
 	localStorage.setItem('products_data', JSON.stringify(data));
+	logger.log('storage', 'end save');
 	
 }
 
 function loadProductsData() {
 	
-	logger.log('try load');
+	logger.log('net', 'try load');
 	var url = 'http://mgalant.myftp.org:8081/shop_alert/api.php';
 	
 	$.ajax({
@@ -80,20 +83,21 @@ function loadProductsData() {
 		success: function(result) {
 			
 			if (result.status == 'success') {
-				logger.log('load success');
+				logger.log('net', 'load success');
 				saveProductsData(result.data);
 				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+				logger.log('storage', localStorage.getItem('products_last_update'));
 				initProductsSelectList();
 			//	$("#messagesMainPage .internetConnectionError").hide();
 			} else {
-				logger.log('load server error');
+				logger.log('net', 'load server error');
 			//	$("#messagesMainPage .internetConnectionError").show();
 			//	setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			}
 			
 		},
 		error: function(error) {
-			logger.log('load connection error - ' + JSON.stringify(error));
+			logger.log('net', 'load connection error - ' + JSON.stringify(error));
 			//$("#messagesMainPage .internetConnectionError").show();
 			//setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 		}
