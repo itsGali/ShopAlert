@@ -86,20 +86,20 @@ function loadProductsData() {
 				$("#messagesMainPage .internetConnectionError").hide();
 			} else {
 				$("#messagesMainPage .internetConnectionError").show();
-				setTimeout(function() {tryLoadProductsData(tryLoadCounter++)}, getConnectionInterval());
+				setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			}
 			
 		},
 		error: function(error) {
 			$("#messagesMainPage .internetConnectionError").show();
-			setTimeout(function() {tryLoadProductsData(tryLoadCounter++)}, getConnectionInterval());
+			setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 		}
 	});
 	
 }
 
-function tryLoadProductsData(counter = null) {
 	
+function tryLoadProductsData() {
 	if (checkConnection()) {
 		loadProductsData();
 	} else {
