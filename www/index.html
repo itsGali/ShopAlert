@@ -25,6 +25,8 @@
 		<script src="js/products-list-draw-functions.js"></script>
 		<script src="js/products-list-data-functions.js"></script>
 		<script src="js/logs-view-functions.js"></script>
+		<script src="js/received-lists-data-functions.js"></script>
+		<script src="js/received-lists-draw-functions.js"></script>
 		
 		<script src="js/initialize.js"></script>
 	</head>
@@ -131,6 +133,38 @@
 				<h1>Shop Alert</h1>
 				<div>
 					<span>My lists</span>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<div class="ui-corner-all custom-corners">
+					<div class="ui-bar ui-bar-a">
+						<h3>New lists</h3>
+					</div>
+					<div id="receivedNewProductsList" class="list ui-body ui-body-a"></div>
+				</div>
+				<div class="ui-corner-all custom-corners">
+					<div class="ui-bar ui-bar-a">
+						<h3>Open lists</h3>
+					</div>
+					<div id="receivedOpenProductsList" class="list ui-body ui-body-a"></div>
+				</div>
+				<div class="ui-corner-all custom-corners">
+					<div class="ui-bar ui-bar-a">
+						<h3>Closed lists</h3>
+					</div>
+					<div id="receivedCloseProductsList" class="list ui-body ui-body-a"></div>
+				</div>
+			</div>
+		</div>
+		
+	<!-------------------------------------------------------------------------------->
+	
+		<div id="receivedList" data-role="page">
+			<div data-role="header">
+				<a href="#listsPage" class="ui-btn">Back</a>
+				<h1>Shop Alert</h1>
+				<div>
+					<span>List</span>
 				</div>
 			</div>
 			<div data-role="main" class="ui-content">
