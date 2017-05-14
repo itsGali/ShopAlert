@@ -1,4 +1,5 @@
-$(document).ready(function() {
+$(document).bind('pageinit', function () {
+//$(document).ready(function() {
 	
 	const ENABLE_LOGS = true;
 	
@@ -9,9 +10,9 @@ $(document).ready(function() {
 
 	if (checkDataStorage()) {
 		initProductsSelectList();
-		if (isUpdateTime()) {
+		//if (isUpdateTime()) {
 			tryLoadProductsData(tryLoadCounter++);
-		}
+		//}
 	} else {
 		$("#messagesMainPage .dataStorageError").show();
 		$("#editProductSelectGroups").parent().hide();
