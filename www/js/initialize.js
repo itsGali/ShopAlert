@@ -1,5 +1,5 @@
-$(document).bind('pageinit', function () {
-
+$(document).ready(function () {
+	
 	if (checkDataStorage()) {
 		initProductsSelectList();
 		//if (isUpdateTime()) {
@@ -10,6 +10,10 @@ $(document).bind('pageinit', function () {
 		$("#editProductSelectGroups").parent().hide();
 		$("#editProductSelectProducts").parent().hide();
 	}
+	
+});
+
+$(document).bind('pageinit', function () {
 	
 	$("#editProductSelectGroups").change(function() {
 		updateProductsSelectList($(this).val());
