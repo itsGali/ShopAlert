@@ -1,18 +1,4 @@
 const updateInterval = 60*60*1000;
-var connectionsCounter = 0;
-
-function getConnectionInterval() {
-	
-	connectionsCounter++;
-	if (connectionsCounter < 20) {
-		return 3000;
-	} else if (connectionsCounter < 50) {
-		return 1800000;
-	} else {
-		return 86400000;
-	}
-	
-}
 
 function checkConnection() {
 	
@@ -70,7 +56,7 @@ function saveProductsData(data) {
 function loadProductsData() {
 	
 	logger.log('net', 'try load');
-	
+	$("#messagesMainPage .internetConnectionError").hide();
 	if (isUpdateTime()) {
 		
 		logger.log('storage', 'is update time');
@@ -91,18 +77,16 @@ function loadProductsData() {
 					saveProductsData(result.data);
 					localStorage.setItem('products_last_update', JSON.stringify(new Date()));
 					initProductsSelectList();
-				//	$("#messagesMainPage .internetConnectionError").hide();
+					$("#messagesMainPage .internetConnectionError").hide();
 				} else {
 					logger.log('net', 'load server error');
-				//	$("#messagesMainPage .internetConnectionError").show();
-				//	setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+					$("#messagesMainPage .internetConnectionError").show();
 				}
 				
 			},
 			error: function(error) {
 				logger.log('net', 'load connection error - ' + JSON.stringify(error));
-				//$("#messagesMainPage .internetConnectionError").show();
-				//setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+				$("#messagesMainPage .internetConnectionError").show();
 			}
 		});
 		

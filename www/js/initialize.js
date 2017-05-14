@@ -10,6 +10,7 @@ $(document).ready(function () {
 				loadProductsData();
 			} else {
 				logger.log('net', 'no connection');
+				$("#messagesMainPage .internetConnectionError").show();
 				document.addEventListener("online", loadProductsData, false);
 			}
 	
