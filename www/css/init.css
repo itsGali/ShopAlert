@@ -1,0 +1,7 @@
+#messagesMainPage .internetConnectionError {
+	display: none;
+}
+
+#messagesMainPage .dataStorageError {
+	display: none;
+}

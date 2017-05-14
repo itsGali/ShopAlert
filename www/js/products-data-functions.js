@@ -17,7 +17,20 @@ function getConnectionInterval() {
 
 function checkConnection() {
 	
+	var networkState = navigator.connection.type;
+	if (networkState == Connection.NONE) {
+		return false;
+	}
 	return true;
+	
+}
+
+function checkDataStorage() {
+	
+	if (typeof(Storage) !== "undefined") {
+		return true;
+	}
+	return false;
 	
 }
 
@@ -65,13 +78,16 @@ function loadProductsData() {
 				saveProductsData(result.data);
 				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
 				initProductsSelectList();
+				$("#messagesMainPage .internetConnectionError").hide();
 			} else {
+				$("#messagesMainPage .internetConnectionError").show();
 				setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			}
 			
 		},
 		error: function(error) {
 			
+			$("#messagesMainPage .internetConnectionError").show();
 			setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
 			
 		}
@@ -84,7 +100,8 @@ function tryLoadProductsData() {
 	if (checkConnection()) {
 		loadProductsData();
 	} else {
-		setTimeout(function() {tryLoadProductsData()}, getConnectionInterval());
+		$("#messagesMainPage .internetConnectionError").show();
+		document.addEventListener("online", loadProductsData, false);
 	}
 
 }

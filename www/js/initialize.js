@@ -1,8 +1,14 @@
-$( document ).ready(function() {
+$(document).bind('pageinit', function () {
 
-	initProductsSelectList();
-	if (isUpdateTime()) {
-		tryLoadProductsData();
+	if (checkDataStorage()) {
+		initProductsSelectList();
+		//if (isUpdateTime()) {
+			tryLoadProductsData();
+		//}
+	} else {
+		$("#messagesMainPage .dataStorageError").show();
+		$("#editProductSelectGroups").parent().hide();
+		$("#editProductSelectProducts").parent().hide();
 	}
 	
 	$("#editProductSelectGroups").change(function() {

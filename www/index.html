@@ -3,6 +3,7 @@
 	<head>
 		<meta http-equiv="Content-type" content="text/html; charset=utf-8">
 		<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css" />
+		<link rel="stylesheet" href="css/init.css" />
 		
 		<script src="cordova.js"></script>
 		
@@ -34,6 +35,19 @@
 			<div data-role="main" class="ui-content">
 				<a href="#createListMainPage" class="ui-btn">Create list</a>
 				<a href="#listsPage" class="ui-btn">My lists</a>
+			</div>
+			
+			<div id="messagesMainPage">
+				<div class="internetConnectionError">
+					<center>
+						<span>No internet connection.</span>
+					</center>
+				</div>
+				<div class="dataStorageError">
+					<center>
+						<span>No data storage available. Products list is unavailable.</span>
+					</center>
+				</div>
 			</div>
 		</div>
 	
@@ -75,8 +89,10 @@
 				</div>
 				<div class="ui-body ui-body-a">
 					<input id="editProductName" type="text" placeholder="Product name..."/>
-					<select id="editProductSelectGroups"></select>
-					<select id="editProductSelectProducts"></select>
+					<div>
+						<select id="editProductSelectGroups"></select>
+						<select id="editProductSelectProducts"></select>
+					</div>
 					<input id="editProductQuantity" type="number" placeholder="Product quantity..." min="1" value="1"/>
 					<fieldset id="editProductPriority" data-role="controlgroup" data-type="horizontal">
 						<legend>Priority</legend>
