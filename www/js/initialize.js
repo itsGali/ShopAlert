@@ -87,8 +87,8 @@ function contactError() {
 	
 }
 
-function contactSuccess(contact) {
+function contactSuccess(contacts) {
 	
-	logger.log('contactList', 'contact list success ' + JSON.stringify(contact));
+	logger.log('contactList', 'contact list success ' + JSON.stringify(contacts[0]));
 	
 }
