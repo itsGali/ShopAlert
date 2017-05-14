@@ -80,6 +80,18 @@ function loadContactsError() {
 
 function loadContactsSuccess(contacts) {
 	
+	myObject.results.sort(function (a, b) {
+		if (a.displayName < b.displayName) {
+			return 1;
+		}
+		if (a.displayName > b.displayName) {
+			return -1;
+		}
+		if (a.displayName == b.displayName) {
+			return 0;
+		}
+	});
+	
 	createProductsListDrawNumberList(contacts);
 	
 	logger.log('contactList', JSON.stringify(contacts[0].id));
