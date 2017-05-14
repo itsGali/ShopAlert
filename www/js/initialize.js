@@ -13,6 +13,8 @@ $(document).ready(function () {
 				$("#messagesMainPage .internetConnectionError").show();
 				document.addEventListener("online", loadProductsData, false);
 			}
+			
+			initializeNumberList();
 	
 		}, false);
 	
@@ -36,6 +38,10 @@ $(document).bind('pageinit', function () {
 		selectProductFromSelectList($(this).val());
 	});
 	
+	$("#selectPhoneNumbers").change(function() {
+		selectPhoneNumberFromList($(this).val());
+	});
+	
 	$("#createListButtonAddProduct").click(function() {
 		clearProductsForm();
 		$("#editProductSave").unbind('click');
@@ -55,3 +61,33 @@ $(document).bind('pageinit', function () {
 	createProductsListDraw(productsListData);
 
 });
+
+function initializeNumberList() {
+	
+	var options = new ContactFindOptions();
+	options.multiple = true;
+	options.hasPhoneNumber = true;
+	var fields = [navigator.contacts.fieldType.displayName, navigator.contacts.fieldType.phoneNumbers];
+	navigator.contacts.find(fields, contactSuccess, contactError, options);
+	
+//	createProductsListDrawNumberList(
+//		[
+//			{name: "A", number: "123"},
+//			{name: "B", number: "456"},
+//			{name: "C", number: "789"},
+//		]
+//	);
+	
+}
+
+function contactError() {
+	
+	logger.log('contactList', 'contact list error');
+	
+}
+
+function contactSuccess(contact) {
+	
+	logger.log('contactList', 'contact list success ' + JSON.stringify(contact));
+	
+}

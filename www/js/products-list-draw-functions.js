@@ -1,6 +1,7 @@
 function createProductsListDraw() {
 	
 	createProductsListDrawComment(productsListData.comment);
+	createProductsListDrawNumber(productsListData.phoneNumber);
 	$("#currentProductsList").empty();
 	if (productsListData.products.length > 0) {
 		$.each(productsListData.products, function() {
@@ -12,7 +13,13 @@ function createProductsListDraw() {
 
 function createProductsListDrawComment(comment) {
 	
-	$("#mainComment").text(comment);
+	$("#mainComment").val(comment);
+	
+}
+
+function createProductsListDrawNumber(number) {
+	
+	$("#phoneNumber").val(number);
 	
 }
 
@@ -75,5 +82,20 @@ function createProductsListDrawProduct(product) {
 	.append(comment)
 	.append(buttons)
 	.appendTo($("#currentProductsList"));
+	
+}
+
+function createProductsListDrawNumberList(numbers) {
+	
+	$("#selectPhoneNumbers").empty();
+	$("#selectPhoneNumbers").val('');
+	if (numbers.length > 0) {
+		$.each(numbers, function(key, value) {
+			$("<option/>", {
+				value: value.number,
+				text: value.name
+			}).appendTo("#selectPhoneNumbers");
+		});
+	}
 	
 }

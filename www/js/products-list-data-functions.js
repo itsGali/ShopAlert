@@ -18,3 +18,10 @@ function productDataClear() {
 	createProductsListDraw();
 	
 }
+
+function selectPhoneNumberFromList(number) {
+	
+	productsListData.phoneNumber = number;
+	createProductsListDraw();
+	
+}
