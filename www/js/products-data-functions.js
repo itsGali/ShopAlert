@@ -62,7 +62,6 @@ function isUpdateTime() {
 function saveProductsData(data) {
 	
 	logger.log('storage', 'start save');
-	logger.log('storage', JSON.stringify(data));
 	localStorage.setItem('products_data', JSON.stringify(data));
 	logger.log('storage', 'end save');
 	
@@ -85,9 +84,8 @@ function loadProductsData() {
 			if (result.status == 'success') {
 				logger.log('net', 'load success');
 				saveProductsData(result.data);
-				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
-				logger.log('storage', localStorage.getItem('products_last_update'));
-				initProductsSelectList();
+//				localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+//				initProductsSelectList();
 			//	$("#messagesMainPage .internetConnectionError").hide();
 			} else {
 				logger.log('net', 'load server error');
