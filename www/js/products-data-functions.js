@@ -89,7 +89,7 @@ function loadProductsData() {
 				if (result.status == 'success') {
 					logger.log('net', 'load success');
 					saveProductsData(result.data);
-//					localStorage.setItem('products_last_update', JSON.stringify(new Date()));
+					localStorage.setItem('products_last_update', JSON.stringify(new Date()));
 					initProductsSelectList();
 				//	$("#messagesMainPage .internetConnectionError").hide();
 				} else {
