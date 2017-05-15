@@ -49,7 +49,7 @@ $(document).ready(function () {
 	listToAdd.products.push(product1);
 	listToAdd.products.push(product2);
 	
-//	receivedListsAddList(listToAdd);
+	receivedListsAddList(listToAdd);
 
 	receivedProductsListDraw();
 	
