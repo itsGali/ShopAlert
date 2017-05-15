@@ -27,17 +27,62 @@ function createProductsListDrawProduct(product) {
 	
 	var productId = $("#currentProductsList > div").length;
 	
-	var name = $("<div/>", {
-		text: product.name
+	var container = $("<div/>", {
+		class: "product priority_" + product.priority
 	});
+	
+	var table =  $("<table/>").appendTo(container);
+	
+	var blockA =  $("<td/>", {
+		class: "bar"
+	}).appendTo(table);
+	
+	var blockB =  $("<td/>", {
+		class: "data"
+	}).appendTo(table);
+	
+	var name = $("<div/>", {
+		class: "name"
+	}).appendTo(blockB);
+	
+	var nameText = $("<span/>", {
+		text: product.name
+	}).appendTo(name);
 	
 	var quantity = $("<div/>", {
-		text: "Quantity: " + product.quantity
-	});
+		class: "quantity"
+	}).appendTo(blockB);
+	
+	var quantityText = $("<span/>", {
+		text: "Quantity: "
+	}).appendTo(quantity);
+	
+	var quantityValue = $("<span/>", {
+		text: product.quantity
+	}).appendTo(quantity);
 	
 	var comment = $("<div/>", {
-		text: "Comment: " + product.comment
-	});
+		class: "comment"
+	}).appendTo(blockB);
+	
+	var commentText = $("<div/>", {
+		text: "Comment"
+	}).appendTo(comment);
+	
+	var commentValue = $("<div/>", {
+		text: product.comment
+	}).appendTo(comment);
+	
+	var buttons =  $("<div/>", {
+		class: "ui-controlgroup ui-controlgroup-horizontal ui-corner-all"
+	})
+	.attr("data-role", "controlgroup")
+	.attr("data-type", "horizontal")
+	.appendTo(blockB);
+	
+	var buttonsWrapper = $("<div/>", {
+		class: "ui-controlgroup-controls"
+	}).appendTo(buttons);
 	
 	var editButton = $("<button/>", {
 		class: "edit ui-btn ui-shadow ui-corner-all ui-first-child",
@@ -52,36 +97,16 @@ function createProductsListDrawProduct(product) {
 		$("#editProductPriority input:nth("+productsListData.products[productId].priority+")").prop( 'checked', true ).click();
 		$("#editProductComment").val(productsListData.products[productId].comment);
 		$("#popupEditProduct").popup( "open" );
-	});
-	
+	}).appendTo(buttonsWrapper);
+
 	var deleteButton = $("<button/>", {
 		class: "delete ui-btn ui-shadow ui-corner-all ui-last-child",
 		text: "Delete"
 	}).click(function() {
 		productDataRemoveProduct(productId);
-	});
+	}).appendTo(buttonsWrapper);
 	
-	var buttonsWrapper = $("<div/>", {
-		class: "ui-controlgroup-controls"
-	})
-	.append(editButton)
-	.append(deleteButton);
-	
-	var buttons = $("<div/>", {
-		class: "ui-controlgroup ui-controlgroup-horizontal ui-corner-all"
-	})
-	.attr("data-role", "controlgroup")
-	.attr("data-type", "horizontal")
-	.append(buttonsWrapper);
-	
-	$("<div/>", {
-		class: "product id_" + productId + " priority_" + product.priority
-	})
-	.append(name)
-	.append(quantity)
-	.append(comment)
-	.append(buttons)
-	.appendTo($("#currentProductsList"));
+	container.appendTo($("#currentProductsList"));
 	
 }
 
