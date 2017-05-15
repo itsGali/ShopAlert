@@ -1,3 +1,4 @@
+/* ERROR MESSAGESS */
 #messagesMainPage .internetConnectionError {
 	display: none;
 }
@@ -8,4 +9,25 @@
 
 #messagesMainPage .apiServerError {
 	display: none;
+}
+
+/* PRODUCTS LIST */
+.productsList .product .bar {
+	width: 20px;
+}
+
+.productsList .product.priority_0 .bar {
+	background-color: blue;
+}
+
+.productsList .product.priority_1 .bar {
+	background-color: green;
+}
+
+.productsList .product.priority_2 .bar {
+	background-color: yellow;
+}
+
+.productsList .product.priority_3 .bar {
+	background-color: red;
 }

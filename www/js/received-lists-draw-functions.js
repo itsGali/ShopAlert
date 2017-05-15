@@ -59,8 +59,10 @@ function receivedProductsListDrawNewList(list) {
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).click(function() {receivedListsOpenList(list.id)})
-	.append(container);
+	}).click(function() {
+		receivedListsOpenList(list.id);
+		receivedListDraw(list.id);
+	}).append(container);
 	
 	var closeButton = $("<button/>", {
 		text: "Close",
@@ -97,7 +99,8 @@ function receivedProductsListDrawOpenList(list) {
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).append(container);
+	}).click(function() {receivedListDraw(list.id);})
+	.append(container);
 	
 	var closeButton = $("<button/>", {
 		text: "Close",
@@ -134,7 +137,8 @@ function receivedProductsListDrawCloseList(list) {
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).append(container);
+	}).click(function() {receivedListDraw(list.id);})
+	.append(container);
 	
 	var openButton = $("<button/>", {
 		text: "Reopen",

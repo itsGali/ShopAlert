@@ -19,7 +19,6 @@ function receivedListsAddList(productList) {
 
 function receivedListsOpenList(listId) {
 	
-	console.log('open ' + listId);
 	var receivedLists = localStorage.getItem("received_products_list");
 	receivedLists = JSON.parse(receivedLists);
 	receivedLists[listId].status = 1;
@@ -30,7 +29,6 @@ function receivedListsOpenList(listId) {
 
 function receivedListsCloseList(listId) {
 	
-	console.log('close ' + listId);
 	var receivedLists = localStorage.getItem("received_products_list");
 	receivedLists = JSON.parse(receivedLists);
 	receivedLists[listId].status = 2;
@@ -81,5 +79,15 @@ function separateLists() {
 		o: openLists,
 		c: closeLists
 	};
+	
+}
+
+function updateProduct(listId, productId, product) {
+	
+	var receivedLists = localStorage.getItem("received_products_list");
+	receivedLists = JSON.parse(receivedLists);
+	receivedLists[listId].products[productId] = product;
+	localStorage.setItem("received_products_list", JSON.stringify(receivedLists));
+	receivedListDraw(listId);
 	
 }

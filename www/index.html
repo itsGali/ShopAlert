@@ -27,6 +27,7 @@
 		<script src="js/logs-view-functions.js"></script>
 		<script src="js/received-lists-data-functions.js"></script>
 		<script src="js/received-lists-draw-functions.js"></script>
+		<script src="js/received-list-draw-functions.js"></script>
 		
 		<script src="js/initialize.js"></script>
 	</head>
@@ -86,7 +87,7 @@
 						<div class="ui-bar ui-bar-a">
 							<h3>Products</h3>
 						</div>
-						<div id="currentProductsList" class="list ui-body ui-body-a"></div>
+						<div id="currentProductsList" class="list ui-body ui-body-a productsList"></div>
 					</div>
 					
 					<a id="createListButtonAddProduct" href="#popupEditProduct" data-rel="popup" class="ui-btn">Add product</a>
@@ -168,7 +169,24 @@
 				</div>
 			</div>
 			<div data-role="main" class="ui-content">
-				
+				<div id="receivedListDate">
+					<span>Create date: </span>
+					<span class="value"></span>
+				</div>
+				<div id="receivedListSource">
+					<span>From: </span>
+					<span class="value"></span>
+				</div>
+				<div id="receivedListComment">
+					<div>Comment</div>
+					<div class="value"></div>
+				</div>
+				<div class="ui-corner-all custom-corners">
+					<div class="ui-bar ui-bar-a">
+						<h3>Products</h3>
+					</div>
+					<div id="receivedListProducts" class="ui-body ui-body-a productsList"></div>
+				</div>
 			</div>
 		</div>
 	
