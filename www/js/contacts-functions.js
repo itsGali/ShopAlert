@@ -37,27 +37,29 @@ function loadContactsSuccess(contacts) {
 	
 }
 
+var findNumberTarget = null;
+
 function findSingleListSourceContact(number, contactNamePlace) {
 	
 	logger.log('contactList', 'try find number ' + number);
+	findNumberTarget = contactNamePlace;
 	
 	var options = new ContactFindOptions();
 	options.filter   = number;
 	options.multiple = true;
 	options.hasPhoneNumber = true;
 	var fields = [navigator.contacts.fieldType.phoneNumbers];
-	navigator.contacts.find(fields, function(contacts) {findContactsSuccess(contacts, contactNamePlace);}, findContactsError, options);
+	navigator.contacts.find(fields, findContactsSuccess, findContactsError, options);
 	logger.log('contactList', 'try find number end');
-	
 }
 
-function findContactsSuccess(contacts, contactNamePlace) {
+function findContactsSuccess(contacts) {
 	
 	logger.log('contactList', 'find contact success');
 	if (contacts.length = 1) {
 		logger.log('contactList', 'try set number to ' + findNumberTarget.text());
 		logger.log('contactList', 'try set number by ' + contacts[0].displayName);
-		contactNamePlace.text(contacts[0].displayName);
+		findNumberTarget.text(contacts[0].displayName);
 	}
 	
 }
