@@ -54,7 +54,6 @@ function findContactsSuccess(contacts) {
 	
 	logger.log('contactList', 'find contact success');
 	if (contacts.length = 1) {
-		logger.log('contactList', 'try set number to ' + findNumberTarget.text());
 		logger.log('contactList', 'try set number by ' + contacts[0].displayName);
 		$("#receivedListSource .value").text(contacts[0].displayName);
 	}
