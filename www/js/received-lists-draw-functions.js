@@ -43,8 +43,6 @@ function receivedProductsListDrawNewList(list) {
 		text: 'From: ' + list.sourceNumber
 	});
 	
-	findSingleListSourceContact(list.sourceNumber, fromText);
-	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -78,6 +76,8 @@ function receivedProductsListDrawNewList(list) {
 	.append(closeButton)
 	.appendTo($("#receivedNewProductsList"));
 	
+	findSingleListSourceContact(list.sourceNumber, fromText);
+	
 }
 
 function receivedProductsListDrawOpenList(list) {
@@ -85,8 +85,6 @@ function receivedProductsListDrawOpenList(list) {
 	var fromText = $("<div/>", {
 		text: 'From: ' + list.sourceNumber
 	});
-	
-	findSingleListSourceContact(list.sourceNumber, fromText);
 	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
@@ -121,6 +119,8 @@ function receivedProductsListDrawOpenList(list) {
 	.append(closeButton)
 	.appendTo($("#receivedOpenProductsList"));
 	
+	findSingleListSourceContact(list.sourceNumber, fromText);
+	
 }
 
 function receivedProductsListDrawCloseList(list) {
@@ -128,8 +128,6 @@ function receivedProductsListDrawCloseList(list) {
 	var fromText = $("<div/>", {
 		text: 'From: ' + list.sourceNumber
 	});
-	
-	findSingleListSourceContact(list.sourceNumber, fromText);
 	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
@@ -163,5 +161,7 @@ function receivedProductsListDrawCloseList(list) {
 	}).append(link)
 	.append(openButton)
 	.appendTo($("#receivedCloseProductsList"));
+	
+	findSingleListSourceContact(list.sourceNumber, fromText);
 	
 }
