@@ -44,12 +44,18 @@ function findSingleListSourceContact(number, contactNamePlace) {
 	logger.log('contactList', 'try find number ' + number);
 	logger.log('contactList', 'place ' + contactNamePlace);
 	findNumberTarget = contactNamePlace;
+	logger.log('contactList', 'try find number 1');
 	
 	var options = new ContactFindOptions();
+	logger.log('contactList', 'try find number 2');
 	options.filter   = number;
+	logger.log('contactList', 'try find number 3');
 	options.multiple = true;
+	logger.log('contactList', 'try find number 4');
 	options.hasPhoneNumber = true;
+	logger.log('contactList', 'try find number 5');
 	var fields = [navigator.contacts.fieldType.phoneNumbers];
+	logger.log('contactList', 'try find number 6');
 	navigator.contacts.find(fields, findContactsSuccess, findContactsError, options);
 	logger.log('contactList', 'try find number end');
 }
