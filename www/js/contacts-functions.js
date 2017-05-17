@@ -36,3 +36,36 @@ function loadContactsSuccess(contacts) {
 	createProductsListDrawNumberList(contacts);
 	
 }
+
+var findNumberTarget = null;
+
+function findSingleListSourceContact(number, contactNamePlace) {
+	
+	logger.log('contactList', 'try find number ' + number);
+	
+	findNumberTarget = contactNamePlace;
+	
+	var options = new ContactFindOptions();
+	options.filter   = number;
+	options.multiple = true;
+	options.hasPhoneNumber = true;
+	var fields = [navigator.contacts.fieldType.phoneNumbers];
+	navigator.contacts.find(fields, findContactsSuccess, findContactsError, options);
+	
+}
+
+function findContactsSuccess(contacts) {
+	
+	logger.log('contactList', 'find contact success');
+	if (contacts.length = 1) {
+		logger.log('contactList', 'try set number by ' + contacts[0].displayName);
+		findNumberTarget.text(contacts[0].displayName);
+	}
+	
+}
+
+function findContactsError(contacts) {
+	
+	logger.log('contactList', 'find contact error');
+	
+}

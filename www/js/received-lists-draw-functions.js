@@ -60,6 +60,7 @@ function receivedProductsListDrawNewList(list) {
 	var link = $("<a/>", {
 		href: "#receivedList"
 	}).click(function() {
+		setReceivedListSourceByNumber(list.sourceNumber, $("#receivedListSource .value"))
 		receivedListsOpenList(list.id);
 		receivedListDraw(list.id);
 	}).append(container);
@@ -99,7 +100,10 @@ function receivedProductsListDrawOpenList(list) {
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).click(function() {receivedListDraw(list.id);})
+	}).click(function() {
+		setReceivedListSourceByNumber(list.sourceNumber, $("#receivedListSource .value"))
+		receivedListDraw(list.id);
+	})
 	.append(container);
 	
 	var closeButton = $("<button/>", {
@@ -137,7 +141,10 @@ function receivedProductsListDrawCloseList(list) {
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).click(function() {receivedListDraw(list.id);})
+	}).click(function() {
+		setReceivedListSourceByNumber(list.sourceNumber, $("#receivedListSource .value"))
+		receivedListDraw(list.id);
+	})
 	.append(container);
 	
 	var openButton = $("<button/>", {
