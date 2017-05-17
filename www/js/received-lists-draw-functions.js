@@ -43,6 +43,8 @@ function receivedProductsListDrawNewList(list) {
 		text: 'From: ' + list.sourceNumber
 	});
 	
+	findSingleListSourceContact(list.sourceNumber, fromText);
+	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -60,7 +62,7 @@ function receivedProductsListDrawNewList(list) {
 	var link = $("<a/>", {
 		href: "#receivedList"
 	}).click(function() {
-		findSingleListSourceContact(list.sourceNumber, $("#receivedListSource .value"))
+		findSingleListSourceContact(list.sourceNumber, $("#receivedListSource .value"));
 		receivedListsOpenList(list.id);
 		receivedListDraw(list.id);
 	}).append(container);
@@ -84,6 +86,8 @@ function receivedProductsListDrawOpenList(list) {
 		text: 'From: ' + list.sourceNumber
 	});
 	
+	findSingleListSourceContact(list.sourceNumber, fromText);
+	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -101,7 +105,7 @@ function receivedProductsListDrawOpenList(list) {
 	var link = $("<a/>", {
 		href: "#receivedList"
 	}).click(function() {
-		findSingleListSourceContact(list.sourceNumber, $("#receivedListSource .value"))
+		findSingleListSourceContact(list.sourceNumber, $("#receivedListSource .value"));
 		receivedListDraw(list.id);
 	})
 	.append(container);
@@ -125,6 +129,8 @@ function receivedProductsListDrawCloseList(list) {
 		text: 'From: ' + list.sourceNumber
 	});
 	
+	findSingleListSourceContact(list.sourceNumber, fromText);
+	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -142,7 +148,7 @@ function receivedProductsListDrawCloseList(list) {
 	var link = $("<a/>", {
 		href: "#receivedList"
 	}).click(function() {
-		findSingleListSourceContact(list.sourceNumber, $("#receivedListSource .value"))
+		findSingleListSourceContact(list.sourceNumber, $("#receivedListSource .value"));
 		receivedListDraw(list.id);
 	})
 	.append(container);
