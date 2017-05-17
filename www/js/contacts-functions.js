@@ -42,7 +42,7 @@ var findNumberTarget = null;
 function findSingleListSourceContact(number, contactNamePlace) {
 	
 	logger.log('contactList', 'try find number ' + number);
-	
+	logger.log('contactList', 'place ' + contactNamePlace);
 	findNumberTarget = contactNamePlace;
 	
 	var options = new ContactFindOptions();
@@ -51,7 +51,7 @@ function findSingleListSourceContact(number, contactNamePlace) {
 	options.hasPhoneNumber = true;
 	var fields = [navigator.contacts.fieldType.phoneNumbers];
 	navigator.contacts.find(fields, findContactsSuccess, findContactsError, options);
-	
+	logger.log('contactList', 'try find number end');
 }
 
 function findContactsSuccess(contacts) {
