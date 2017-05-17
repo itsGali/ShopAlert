@@ -15,6 +15,8 @@ $(document).ready(function () {
 			}
 			
 			initializeNumberList();
+			initTestsData();
+			receivedProductsListDraw();
 	
 		}, false);
 	
@@ -25,9 +27,6 @@ $(document).ready(function () {
 		$("#editProductSelectProducts").parent().hide();
 	
 	}
-	
-	initTestsData();
-	receivedProductsListDraw();
 	
 });
 
