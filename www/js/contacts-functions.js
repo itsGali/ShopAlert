@@ -37,12 +37,9 @@ function loadContactsSuccess(contacts) {
 	
 }
 
-var findNumberTarget = null;
-
-function findSingleListSourceContact(number, contactNamePlace) {
+function findSingleListSourceContact(number) {
 	
 	logger.log('contactList', 'try find number ' + number);
-	findNumberTarget = contactNamePlace;
 	
 	var options = new ContactFindOptions();
 	options.filter   = number;
@@ -59,7 +56,7 @@ function findContactsSuccess(contacts) {
 	if (contacts.length = 1) {
 		logger.log('contactList', 'try set number to ' + findNumberTarget.text());
 		logger.log('contactList', 'try set number by ' + contacts[0].displayName);
-		findNumberTarget.text(contacts[0].displayName);
+		$("#receivedListSource .value").text(contacts[0].displayName);
 	}
 	
 }
