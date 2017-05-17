@@ -39,10 +39,6 @@ function receivedProductsListDraw() {
 
 function receivedProductsListDrawNewList(list) {
 	
-	var fromText = $("<div/>", {
-		text: 'From: ' + list.sourceNumber
-	});
-	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -53,13 +49,13 @@ function receivedProductsListDrawNewList(list) {
 	
 	var container = $("<div/>", {
 		class: 'received_product_list_link'
-	}).append(fromText)
-	.append(dateText)
+	}).append(dateText)
 	.append(commentText);
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
 	}).click(function() {
+		findSingleListSourceContact(list.sourceNumber);
 		receivedListsOpenList(list.id);
 		receivedListDraw(list.id);
 	}).append(container);
@@ -79,10 +75,6 @@ function receivedProductsListDrawNewList(list) {
 
 function receivedProductsListDrawOpenList(list) {
 	
-	var fromText = $("<div/>", {
-		text: 'From: ' + list.sourceNumber
-	});
-	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -93,13 +85,15 @@ function receivedProductsListDrawOpenList(list) {
 	
 	var container = $("<div/>", {
 		class: 'received_product_list_link'
-	}).append(fromText)
-	.append(dateText)
+	}).append(dateText)
 	.append(commentText);
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).click(function() {receivedListDraw(list.id);})
+	}).click(function() {
+		findSingleListSourceContact(list.sourceNumber);
+		receivedListDraw(list.id);
+	})
 	.append(container);
 	
 	var closeButton = $("<button/>", {
@@ -117,10 +111,6 @@ function receivedProductsListDrawOpenList(list) {
 
 function receivedProductsListDrawCloseList(list) {
 	
-	var fromText = $("<div/>", {
-		text: 'From: ' + list.sourceNumber
-	});
-	
 	var dateText = $("<div/>", {
 		text: 'At ' + list.sendDate.toString()
 	});
@@ -131,13 +121,15 @@ function receivedProductsListDrawCloseList(list) {
 	
 	var container = $("<div/>", {
 		class: 'received_product_list_link'
-	}).append(fromText)
-	.append(dateText)
+	}).append(dateText)
 	.append(commentText);
 	
 	var link = $("<a/>", {
 		href: "#receivedList"
-	}).click(function() {receivedListDraw(list.id);})
+	}).click(function() {
+		findSingleListSourceContact(list.sourceNumber);
+		receivedListDraw(list.id);
+	})
 	.append(container);
 	
 	var openButton = $("<button/>", {
