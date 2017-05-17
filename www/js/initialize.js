@@ -58,7 +58,11 @@ $(document).bind('pageinit', function () {
 	
 	$("#buttonLogsViewLink").click(function() {
 		logViewDrawLogs();
-	})
+	});
+	
+	$("#listsPage").click(function() {
+		receivedProductsListDraw();
+	});
 	
 	createProductsListDraw(productsListData);
 
