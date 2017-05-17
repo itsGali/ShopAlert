@@ -121,3 +121,18 @@ function productFormUpdateProduct(productId) {
 	}
 
 }
+
+function trySendShopListData() {
+	
+	productsListData.sourceNumber = getMyNumber();
+	productsListData.phoneNumber = $("#phoneNumber").val();
+	productsListData.comment = $("#mainComment").val();
+	productsListData.sendDate = new Date();
+	
+	if (productsListData.phoneNumber != '' && productsListData.products.length > 0) {
+		var message = prepareDataToSend(productsListData);
+		return sendMessage($("#phoneNumber").val(), message);
+	}
+	return false;
+	
+}

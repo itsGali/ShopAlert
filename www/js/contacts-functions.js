@@ -41,12 +41,17 @@ function findSingleListSourceContact(number) {
 	
 	logger.log('contactList', 'try find number ' + number);
 	
-	var options = new ContactFindOptions();
-	options.filter   = number;
-	options.multiple = true;
-	options.hasPhoneNumber = true;
-	var fields = [navigator.contacts.fieldType.phoneNumbers];
-	navigator.contacts.find(fields, findContactsSuccess, findContactsError, options);
+	try {
+		var options = new ContactFindOptions();
+		options.filter   = number;
+		options.multiple = true;
+		options.hasPhoneNumber = true;
+		var fields = [navigator.contacts.fieldType.phoneNumbers];
+		navigator.contacts.find(fields, findContactsSuccess, findContactsError, options);
+	} catch (error) {
+		logger.log('contactList', 'search number error');
+	}
+	
 	logger.log('contactList', 'try find number end');
 }
 
@@ -63,5 +68,11 @@ function findContactsSuccess(contacts) {
 function findContactsError(error) {
 	
 	logger.log('contactList', 'find contact error');
+	
+}
+
+function getMyNumber() {
+	
+	return '123456789';
 	
 }

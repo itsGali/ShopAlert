@@ -1,7 +1,7 @@
 function receivedListsAddList(productList) {
-	
+
 	var receivedLists = localStorage.getItem("received_products_list");
-	
+
 	if (receivedLists === null) {
 		productList.id = 0;
 		productList.status = 0;

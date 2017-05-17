@@ -15,7 +15,6 @@ $(document).ready(function () {
 			}
 			
 			initializeNumberList();
-			initTestsData();
 			receivedProductsListDraw();
 	
 		}, false);
@@ -27,6 +26,16 @@ $(document).ready(function () {
 		$("#editProductSelectProducts").parent().hide();
 	
 	}
+	
+	
+	$("#createListButtonSend").click(function() {
+		var result = trySendShopListData();
+		if (result) {
+			productDataClear();
+		}
+	});
+	
+	initTestsData();
 	
 });
 
@@ -60,7 +69,7 @@ $(document).bind('pageinit', function () {
 		logViewDrawLogs();
 	});
 	
-	$("#listsPage").click(function() {
+	$("#buttonListsPage").click(function() {
 		receivedProductsListDraw();
 	});
 	
