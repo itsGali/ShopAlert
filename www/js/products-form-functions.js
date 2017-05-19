@@ -122,7 +122,7 @@ function productFormUpdateProduct(productId) {
 
 }
 
-function trySendShopListData() {
+function checkShopListForm() {
 	
 	productsListData.sourceNumber = getMyNumber();
 	productsListData.phoneNumber = $("#phoneNumber").val();
