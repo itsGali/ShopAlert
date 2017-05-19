@@ -40,7 +40,7 @@ function receivedProductsListDraw() {
 function receivedProductsListDrawNewList(list) {
 	
 	var dateText = $("<div/>", {
-		text: 'At ' + list.sendDate.toString()
+		text: 'At ' + getDateString(list.sendDate)
 	});
 	
 	var commentText = $("<div/>", {
@@ -76,7 +76,7 @@ function receivedProductsListDrawNewList(list) {
 function receivedProductsListDrawOpenList(list) {
 	
 	var dateText = $("<div/>", {
-		text: 'At ' + list.sendDate.toString()
+		text: 'At ' + getDateString(list.sendDate)
 	});
 	
 	var commentText = $("<div/>", {
@@ -112,7 +112,7 @@ function receivedProductsListDrawOpenList(list) {
 function receivedProductsListDrawCloseList(list) {
 	
 	var dateText = $("<div/>", {
-		text: 'At ' + list.sendDate.toString()
+		text: 'At ' + getDateString(list.sendDate)
 	});
 	
 	var commentText = $("<div/>", {
