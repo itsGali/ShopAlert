@@ -30,6 +30,7 @@
 		<script src="js/received-list-draw-functions.js"></script>
 		<script src="js/contacts-functions.js"></script>
 		<script src="js/sms-functions.js"></script>
+		<script src="js/date-functions.js"></script>
 		
 		<script src="js/test-functions.js"></script>
 		<script src="js/initialize.js"></script>
@@ -45,7 +46,7 @@
 			<div data-role="main" class="ui-content">
 				<a href="#createListMainPage" class="ui-btn">Create list</a>
 				<a id="buttonListsPage" href="#listsPage" class="ui-btn">My lists</a>
-				<a id="buttonLogsViewLink" href="#logsPage" class="ui-btn">Logs</a>
+				<!--<a id="buttonLogsViewLink" href="#logsPage" class="ui-btn">Logs</a>-->
 				
 				<div id="messagesMainPage">
 					<div class="internetConnectionError">
@@ -127,6 +128,58 @@
 					<button id="editProductSave" type="button">Save</button>
 				</div>
 			</div>
+			
+			<div data-role="popup" id="popupSendListConfirm">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Send list?</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>Are you sure?</span>
+					<button id="popupSendListConfirmSend" type="button">Send</button>
+					<button id="popupSendListConfirmBack" type="button">Back</button>
+				</div>
+			</div>
+			
+			<div data-role="popup" id="popupSendListErrorNoNumber">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Send error</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>Destination number can't be empty</span>
+				</div>
+			</div>
+			
+			<div data-role="popup" id="popupSendListErrorNoProducts">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Product</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>Products list can't be empty</span>
+				</div>
+			</div>
+			
+			<div data-role="popup" id="popupSendListSendError">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Product</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>Send error - try again</span>
+				</div>
+			</div>
+			
+			<div data-role="popup" id="popupSendListSendSuccess">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Product</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>List send</span>
+				</div>
+			</div>
 		</div>
 	
 	<!-------------------------------------------------------------------------------->
@@ -171,6 +224,7 @@
 					<span>List</span>
 				</div>
 			</div>
+			
 			<div data-role="main" class="ui-content">
 				<div id="receivedListDate">
 					<span>Create date: </span>
@@ -189,6 +243,27 @@
 						<h3>Products</h3>
 					</div>
 					<div id="receivedListProducts" class="ui-body ui-body-a productsList"></div>
+				</div>
+				<button id="receivedListSendConfirm" type="button">Send confirm</button>
+			</div>
+			
+			<div data-role="popup" id="popupSendReceivedListSuccess">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Confirmation send</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>Confirmation send</span>
+				</div>
+			</div>
+			
+			<div data-role="popup" id="popupSendReceivedListError">
+				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+				<div class="ui-bar ui-bar-a">
+					<h3>Confirmation send</h3>
+				</div>
+				<div class="ui-body ui-body-a">
+					<span>Confirmation send error</span>
 				</div>
 			</div>
 		</div>
