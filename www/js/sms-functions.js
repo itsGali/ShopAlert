@@ -78,3 +78,28 @@ function onMessageReceived() {
 	}
 	
 }
+
+function sendConfirmMessage(listId) {
+	
+	var receivedLists = localStorage.getItem("received_products_list");
+	receivedLists = JSON.parse(receivedLists);
+	var list = receivedLists[listId];
+	
+	var content = 'ShopAlert - reply to list posted '+getDateString(list.sendDate)+'. List: ';
+	$.each(list.products, function(index, product) {
+		if (product.status == 0) {
+			content = content+product.name+' not bought,';
+		}
+		if (product.status == 1) {
+			content = content+product.name+' bought,';
+		}
+		if (product.status == 2) {
+			content = content+product.name+' unavailable,';
+		}
+	});
+	content = content.slice(0, -1);
+	content = content+'.';
+	
+	return sendMessage(list.sourceNumber, content);
+	
+}
