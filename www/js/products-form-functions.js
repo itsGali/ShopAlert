@@ -132,15 +132,35 @@ function checkShopListForm() {
 	if (productsListData.phoneNumber == '' || !(productsListData.products.length > 0)) {
 		if (productsListData.phoneNumber == '') {
 			$( "#popupSendListErrorNoNumber" ).popup( "open" );
+			return false;
 		} else {
 			$( "#popupSendListErrorNoProducts" ).popup( "open" );
+			return false;
 		}
 	}
+	
+	return true;
+	
+}
+
+function trySendShopListData() {
 	
 	if (productsListData.phoneNumber != '' && productsListData.products.length > 0) {
 		var message = prepareDataToSend(productsListData);
 		return sendMessage($("#phoneNumber").val(), message);
 	}
 	return false;
+	
+}
+
+function updateCreateListFormComment() {
+	
+	productsListData.comment = $("#mainComment").val();
+	
+}
+
+function updateCreateListFormNumber() {
+	
+	productsListData.phoneNumber = $("#phoneNumber").val();
 	
 }
