@@ -129,6 +129,14 @@ function trySendShopListData() {
 	productsListData.comment = $("#mainComment").val();
 	productsListData.sendDate = new Date();
 	
+	if (productsListData.phoneNumber == '' || !(productsListData.products.length > 0)) {
+		if (productsListData.phoneNumber == '') {
+			$( "#popupSendListErrorNoNumber" ).popup( "open" );
+		} else {
+			$( "#popupSendListErrorNoProducts" ).popup( "open" );
+		}
+	}
+	
 	if (productsListData.phoneNumber != '' && productsListData.products.length > 0) {
 		var message = prepareDataToSend(productsListData);
 		return sendMessage($("#phoneNumber").val(), message);
