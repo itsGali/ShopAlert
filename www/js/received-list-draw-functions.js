@@ -5,7 +5,7 @@ function receivedListDraw(listId) {
 	productList = receivedLists[listId];
 	
 	$("#receivedListSource span.value").text(productList.sourceNumber);
-	$("#receivedListDate span.value").text(productList.sendDate.toString());
+	$("#receivedListDate span.value").text(getDateString(productList.sendDate));
 	$("#receivedListComment div.value").text(productList.comment);
 	
 	$("#receivedListProducts").empty();
