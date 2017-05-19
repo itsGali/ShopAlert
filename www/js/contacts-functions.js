@@ -71,8 +71,13 @@ function findContactsError(error) {
 	
 }
 
+
+function success(phonenumber) {
+	console.log("My number is " + phonenumber);
+}
+
 function getMyNumber() {
-	
-	return '123456789';
+	window.plugins.phonenumber.get(success, failed);
+	return phonenumber;
 	
 }
