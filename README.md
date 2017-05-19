@@ -1,2 +1,2 @@
-# ShoppingAlert
-ShoppingAlert app for android devices
+# ShopAlert
+ShopAlert app for android devices
