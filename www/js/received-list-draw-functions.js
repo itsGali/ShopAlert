@@ -96,4 +96,14 @@ function receivedListSingleProductDraw(key, product, listId) {
 	
 	container.appendTo($("#receivedListProducts"));
 	
+	$("#receivedListSendConfirm").unbind("click");
+	$("#receivedListSendConfirm").click(function() {
+		var result = sendConfirmMessage(listId);
+		if (result) {
+			$("#popupSendReceivedListSuccess").popup("open");
+		} else {
+			$("#popupSendReceivedListError").popup("open");
+		}
+	});
+	
 }
