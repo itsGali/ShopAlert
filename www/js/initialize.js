@@ -29,10 +29,37 @@ $(document).ready(function () {
 	
 	
 	$("#createListButtonSend").click(function() {
+		var result = checkShopListForm();
+		if (result) {
+			$("#popupSendListConfirm").popup("open");
+		}
+	});
+	
+	$("#popupSendListConfirmSend").click(function() {
+		$("#popupSendListConfirm").popup("close");
 		var result = trySendShopListData();
 		if (result) {
 			productDataClear();
+			setTimeout(function (){
+				$("#popupSendListSendSuccess").popup("open");
+			}, 1000);
+		} else {
+			setTimeout(function (){
+				$("#popupSendListSendError").popup("open");
+			}, 1000);
 		}
+	});
+	
+	$("#popupSendListConfirmBack").click(function() {
+		$("#popupSendListConfirm").popup("close");
+	});
+	
+	$("#phoneNumber").change(function() {
+		updateCreateListFormNumber();
+	});
+	
+	$("#mainComment").change(function() {
+		updateCreateListFormComment();
 	});
 	
 	initTestsData();
