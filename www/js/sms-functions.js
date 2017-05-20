@@ -7,7 +7,7 @@ function sendMessage(number, content) {
 				
 		var success = function () { logger.log('sms', 'send success'); };
 		var error = function (e) { logger.log('sms', 'send error'); };
-		CordovaSMS.sendSMS(receiver,message,success,error);
+		CordovaSMS.sendSMS(receiver,'test',success,error);
 		return true;
 		
 	} catch (error) {
