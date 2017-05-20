@@ -71,6 +71,30 @@ function findContactsError(error) {
 	
 }
 
+function checkMyNumber() {
+	
+	try {
+		window.plugins.sim.getSimInfo(saveMyNumber, errorMyNumber);
+	} catch() {}
+	
+}
+
+function saveMyNumber(result) {
+	
+	logger.log('myNumber', 'get my number success');
+	logger.log('myNumber', 'data: ' + JSON.stringify(result));
+	myNumber = result.phoneNumber;
+	logger.log('myNumber', 'number: ' + myNumber);
+	
+}
+
+function errorMyNumber(error) {
+	
+	logger.log('myNumber', 'get my number error');
+	logger.log('myNumber', JSON.stringify(errorJSON););
+	
+}
+
 function getMyNumber() {
 	
 	return '123456789';

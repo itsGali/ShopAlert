@@ -15,6 +15,7 @@ $(document).ready(function () {
 			}
 			
 			initializeNumberList();
+			checkMyNumber();
 			receivedProductsListDraw();
 	
 		}, false);
