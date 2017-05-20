@@ -80,7 +80,7 @@ function checkMyNumber() {
 		logger.log('myNumber', 'try success');
 	} catch(error) {
 		logger.log('myNumber', 'catch');
-		logger.log('myNumber', JSON.stringify(error););
+		logger.log('myNumber', JSON.stringify(error));
 	}
 	
 }
@@ -97,7 +97,7 @@ function saveMyNumber(result) {
 function errorMyNumber(error) {
 	
 	logger.log('myNumber', 'get my number error');
-	logger.log('myNumber', JSON.stringify(errorJSON););
+	logger.log('myNumber', JSON.stringify(errorJSON));
 	
 }
 
