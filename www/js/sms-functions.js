@@ -3,30 +3,45 @@ function sendMessage(number, content) {
 	logger.log('sms', 'send to ' + number);
 	logger.log('sms', 'message ' + content);
 	
-	var options = {
-            replaceLineBreaks: false,
-            android: {
-                intent: ''
+	var hasPermissionSuccess = function (hasPermission) {
+		if (hasPermission) {
+			
+			logger.log('sms', 'permission');
+			
+			var options = {
+					replaceLineBreaks: false,
+					android: {
+						intent: ''
+				}
+			};
+			
+			var success = function () { logger.log('sms', 'send success'); };
+			var error = function (e) { logger.log('sms', 'send error'); };
+
+			try {
+				
+				sms.send(number, message, options, success, error);
+				
+			} catch (error) {
+				
+				logger.log('sms', 'send catch error');
+				logger.log('sms', JSON.stringify(error));
+				
+			}
+			
+		}
+		else {
+			logger.log('sms', 'no permission');
 		}
 	};
-
-	try {
+	var hasPermissionError = function (e) {
+		logger.log('sms', 'has permission error');
+		logger.log('sms', JSON.stringify(e));
+	};
 		
-		var success = function () { logger.log('sms', 'send success'); };
-		var error = function (e) { logger.log('sms', 'send error'); };
-		sms.send(number, message, options, success, error);
-		
-		return true;
-		
-	} catch (error) {
-		
-		logger.log('sms', 'send catch error');
-		logger.log('sms', JSON.stringify(error));
-		return false;
-		
-	}
+	sms.hasPermission(hasPermissionSuccess, hasPermissionError);
 	
-	
+	return true;
 }
 
 function getMessage() {
