@@ -11,7 +11,7 @@ function sendMessage(number, content) {
 			var options = {
 					replaceLineBreaks: false,
 					android: {
-						intent: ''
+						intent: 'INTENT'
 				}
 			};
 			
