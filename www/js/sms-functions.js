@@ -2,7 +2,29 @@ function sendMessage(number, content) {
 	
 	logger.log('sms', 'send to ' + number);
 	logger.log('sms', 'message ' + content);
-	return true;
+	
+	var options = {
+            replaceLineBreaks: false,
+            android: {
+                intent: ''
+		}
+	};
+
+	try {
+		
+		var success = function () { logger.log('sms', 'send success'); };
+		var error = function (e) { logger.log('sms', 'send error'); };
+		sms.send(number, message, options, success, error);
+		
+		return true;
+		
+	} catch (error) {
+		
+		logger.log('sms', 'send catch error');
+		return false;
+		
+	}
+	
 	
 }
 
