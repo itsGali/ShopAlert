@@ -1,0 +1,107 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "CordovaSMS",
+        "scope": null,
+        "escapedName": "CordovaSMS",
+        "name": "CordovaSMS",
+        "rawSpec": "",
+        "spec": "latest",
+        "type": "tag"
+      },
+      "C:\\Users\\Gali\\Desktop\\Nowy folder\\ShoppingAlert"
+    ],
+    [
+      {
+        "raw": "CordovaSMS",
+        "scope": null,
+        "escapedName": "CordovaSMS",
+        "name": null,
+        "rawSpec": "CordovaSMS",
+        "spec": "C:\\Users\\Gali\\Desktop\\Nowy folder\\ShoppingAlert\\node_modules\\CordovaSMS",
+        "type": "directory"
+      },
+      "C:\\Users\\Gali\\Desktop\\Nowy folder\\ShoppingAlert\\node_modules"
+    ]
+  ],
+  "_from": "CordovaSMS@latest",
+  "_id": "CordovaSMS@0.0.3",
+  "_inCache": true,
+  "_location": "/CordovaSMS",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/CordovaSMS-0.0.3.tgz_1480503963043_0.35678996494971216"
+  },
+  "_npmUser": {
+    "name": "rampicos",
+    "email": "ramkumar.ramk@gmail.com"
+  },
+  "_npmVersion": "1.4.28",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "CordovaSMS",
+    "scope": null,
+    "escapedName": "CordovaSMS",
+    "name": null,
+    "rawSpec": "CordovaSMS",
+    "spec": "C:\\Users\\Gali\\Desktop\\Nowy folder\\ShoppingAlert\\node_modules\\CordovaSMS",
+    "type": "directory"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/CordovaSMS/-/CordovaSMS-0.0.3.tgz",
+  "_shasum": "19a6647b49695393b429ec852b2262f9b3bdd6f4",
+  "_shrinkwrap": null,
+  "_spec": "CordovaSMS",
+  "_where": "C:\\Users\\Gali\\Desktop\\Nowy folder\\ShoppingAlert\\node_modules",
+  "author": {
+    "name": "Ramkumar Murugadoss"
+  },
+  "bugs": {
+    "url": "https://github.com/rampicos/Cordova-SMS-Plugin/issues"
+  },
+  "cordova": {
+    "platforms": [
+      "android"
+    ]
+  },
+  "dependencies": {},
+  "description": "A SMS Plugin to enable to send & receive SMS on Cordova based Android App's by Ramkumar Murugadoss",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "19a6647b49695393b429ec852b2262f9b3bdd6f4",
+    "tarball": "https://registry.npmjs.org/CordovaSMS/-/CordovaSMS-0.0.3.tgz"
+  },
+  "engines": [
+    {
+      "name": "cordova-android",
+      "version": ">=4.0.0"
+    }
+  ],
+  "gitHead": "4135841643cfd05fb741f925d1dfc5185d9c4295",
+  "homepage": "https://github.com/rampicos/Cordova-SMS-Plugin",
+  "keywords": [
+    "cordova",
+    "cordova-android"
+  ],
+  "license": "Apache 2.0",
+  "maintainers": [
+    {
+      "name": "rampicos",
+      "email": "ramkumar.ramk@gmail.com"
+    }
+  ],
+  "name": "CordovaSMS",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rampicos/Cordova-SMS-Plugin.git"
+  },
+  "scripts": {},
+  "version": "0.0.3"
+}
