@@ -5,9 +5,18 @@ function sendMessage(number, content) {
 	
 	try {
 		
-		logger.log('sms', 'try set default');
-		CordovaSMS.setDefault(null,null,"com.app.shopalert");
-		logger.log('sms', 'try set default end');
+		logger.log('sms', 'try check default');
+		
+		CordovaSMS.checkDefault(function(data){
+			if (data.thisApp != data.currentDefault) {
+				logger.log('sms', 'try set default');
+				CordovaSMS.setDefault(null,null,"com.app.shopalert");
+				logger.log('sms', 'try set default end');
+			}
+        }, 
+        function(){});
+		
+		logger.log('sms', 'try check default end');
 				
 		var success = function () { logger.log('sms', 'send success'); };
 		var error = function (e) { logger.log('sms', 'send error'); };
