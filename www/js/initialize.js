@@ -15,6 +15,7 @@ $(document).ready(function () {
 			}
 			
 			initializeNumberList();
+			logger.log('myNumber', 'before number check');
 			checkMyNumber();
 			receivedProductsListDraw();
 	

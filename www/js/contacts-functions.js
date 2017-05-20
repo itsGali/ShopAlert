@@ -73,9 +73,14 @@ function findContactsError(error) {
 
 function checkMyNumber() {
 	
+	logger.log('myNumber', 'try check');
 	try {
+		logger.log('myNumber', 'try');
 		window.plugins.sim.getSimInfo(saveMyNumber, errorMyNumber);
-	} catch() {}
+		logger.log('myNumber', 'try success');
+	} catch() {
+		logger.log('myNumber', 'catch');
+	}
 	
 }
 
