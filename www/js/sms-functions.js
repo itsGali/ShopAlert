@@ -15,8 +15,7 @@ function sendMessage(number, content) {
 				logger.log('sms', 'you agree on sms');
 				var success = function () { logger.log('sms', 'send success'); };
 				var error = function (e) { logger.log('sms', 'send error'); };
-				CordovaSMS.sendSMS(number,'test',success,error);
-				return true;
+				CordovaSMS.sendSMS(number,content,success,error);
 			} else {
 				logger.log('sms', 'you dont agree on sms');
 			}
@@ -26,7 +25,6 @@ function sendMessage(number, content) {
 		
 		logger.log('sms', 'send catch error');
 		logger.log('sms', JSON.stringify(error));
-		return false;
 		
 	}
 	
