@@ -21,6 +21,7 @@ function sendMessage(number, content) {
 	} catch (error) {
 		
 		logger.log('sms', 'send catch error');
+		logger.log('sms', JSON.stringify(error));
 		return false;
 		
 	}
