@@ -78,8 +78,9 @@ function checkMyNumber() {
 		logger.log('myNumber', 'try');
 		window.plugins.sim.getSimInfo(saveMyNumber, errorMyNumber);
 		logger.log('myNumber', 'try success');
-	} catch() {
+	} catch(error) {
 		logger.log('myNumber', 'catch');
+		logger.log('myNumber', JSON.stringify(error););
 	}
 	
 }
