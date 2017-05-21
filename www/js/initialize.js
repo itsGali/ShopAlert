@@ -19,7 +19,7 @@ $(document).ready(function () {
 				logger.log('received sms', JSON.stringify(sms));
 				logger.log('received sms', sms);
 			});
-			
+			logger.log('received sms', 'after listener deklare');
 			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();

@@ -40,9 +40,6 @@ function sendMessage(number, content) {
 
 function getMessage(sms) {
 	
-	logger.log('received sms', 'i got sms');
-	logger.log('received sms', JSON.stringify(sms));
-	
 //	var listToAdd = new ProductsList();
 //	listToAdd.sourceNumber = '784 628 738';
 //	listToAdd.phoneNumber = '123456789';
