@@ -5,21 +5,33 @@ function sendMessage(number, content) {
 	
 	try {
 		
-		logger.log('sms', 'try set default');
-		CordovaSMS.setDefault(null,null,"com.app.shopalert");
-		logger.log('sms', 'try set default end');
-		
-		CordovaSMS.onDefaultSelected(function(result) {
-			logger.log('sms', 'check agree on sms');
-			if (result) {
-				logger.log('sms', 'you agree on sms');
-				var success = function () { logger.log('sms', 'send success'); };
-				var error = function (e) { logger.log('sms', 'send error'); };
-				CordovaSMS.sendSMS(number,content,success,error);
+		CordovaSMS.checkDefault(function(data{
+			logger.log('sms', 'my ' + data.thisApp);
+			logger.log('sms', 'current ' + data.currentDefault);
+			if (data.thisApp == data.currentDefault) {
+				var result = true;
 			} else {
-				logger.log('sms', 'you dont agree on sms');
+				var result = false;
 			}
-		});
+			logger.log('sms', 'current ' + result);
+        }, 
+        function(){});
+		
+		//logger.log('sms', 'try set default');
+		//CordovaSMS.setDefault(null,null,"com.app.shopalert");
+		//logger.log('sms', 'try set default end');
+		
+		//CordovaSMS.onDefaultSelected(function(result) {
+		//	logger.log('sms', 'check agree on sms');
+		//	if (result) {
+		//		logger.log('sms', 'you agree on sms');
+		//		var success = function () { logger.log('sms', 'send success'); };
+		//		var error = function (e) { logger.log('sms', 'send error'); };
+		//		CordovaSMS.sendSMS(number,content,success,error);
+		//	} else {
+		//		logger.log('sms', 'you dont agree on sms');
+		//	}
+		//});
 		
 	} catch (error) {
 		
