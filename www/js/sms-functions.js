@@ -1,4 +1,4 @@
-var smsPrefix = "This person send you a shop list. Open ShopAlert app! ";
+var smsPrefix = "ShopAlert ";
 
 function sendMessage(number, content) {
 	
@@ -78,9 +78,9 @@ function parseMessage(number, message) {
 	logger.log('message ', message);
 	try {
 		
-//		var data = message.slice(smsPrefix.length);
-//		logger.log('message ', message);
-		var data = JSON.parse(message);
+		var data = message.slice(smsPrefix.length);
+		logger.log('message ', data);
+		var data = JSON.parse(data);
 		if (data.sign == "SA#1965") {
 			logger.log('message ', 'true');
 			return data.list;
@@ -111,7 +111,7 @@ function prepareDataToSend(list) {
 		list: sendList
 	}
 	
-	return smsPrefix + JSON.stringify(message);
+	return smsPrefix+JSON.stringify(message);
 	
 }
 
