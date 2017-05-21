@@ -1,3 +1,5 @@
+var smsPrefix = "This person send you a shop list. Open ShopAlert app! ";
+
 function sendMessage(number, content) {
 	
 	logger.log('sms', 'send to ' + number);
@@ -46,18 +48,17 @@ function getMessages() {
 		
 		var filter = {
 			box : 'inbox',
-			body : 'SA#1965',
-			maxCount : 10,
+			address : '+48516931067'
 		};
 		
 		SMS.listSMS(filter, function(data) {
 			logger.log('sms', 'sms get');
-				logger.log('sms', 'sms data ' + JSON.stringify(data));
 			
 			$.each(data, function(key, sms) {
-				logger.log('sms', 'sms ' + JSON.stringify(sms));
-				logger.log('sms ', sms.address);
-				logger.log('sms ', sms.body);
+//				logger.log('sms', 'sms ' + JSON.stringify(sms));
+//				logger.log('sms ', sms.address);
+//				logger.log('sms ', sms.body);
+				parseMessage(sms.address, sms.body);
 			});
 			
 		}, function(err){
@@ -72,18 +73,24 @@ function getMessages() {
 	
 }
 
-function parseMessage(message) {
-	
+function parseMessage(number, message) {
+	logger.log('message ', number);
+	logger.log('message ', message);
 	try {
 		
+//		var data = message.slice(smsPrefix.length);
+//		logger.log('message ', message);
 		var data = JSON.parse(message);
 		if (data.sign == "SA#1965") {
+			logger.log('message ', 'true');
 			return data.list;
 		}
+		logger.log('message ', 'false');
 		return null;
 		
 	} catch(error) {
 	
+		logger.log('message ', 'error');
 		return null;
 	
 	}
@@ -104,7 +111,7 @@ function prepareDataToSend(list) {
 		list: sendList
 	}
 	
-	return JSON.stringify(message);
+	return smsPrefix + JSON.stringify(message);
 	
 }
 

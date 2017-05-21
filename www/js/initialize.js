@@ -1,5 +1,6 @@
 $(document).ready(function () {
-	
+	console.log("text".slice(5));
+	return;
 	if (checkDataStorage()) {
 		
 		initProductsSelectList();
