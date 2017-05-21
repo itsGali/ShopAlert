@@ -54,6 +54,7 @@
 			<div data-role="main" class="ui-content">
 				<a href="#createListMainPage" class="ui-btn">Create list</a>
 				<a id="buttonListsPage" href="#listsPage" class="ui-btn">My lists</a>
+				<a id="buttonSettingsLink" href="#myNumberSetting" class="ui-btn">Settings</a>
 				<a id="buttonLogsViewLink" href="#logsPage" class="ui-btn">Logs</a>
 				
 				<div id="messagesMainPage">
@@ -255,16 +256,6 @@
 				<button id="receivedListSendConfirm" type="button">Send confirm</button>
 			</div>
 			
-			<div data-role="popup" id="popupSendReceivedListSuccess">
-				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-				<div class="ui-bar ui-bar-a">
-					<h3>Confirmation send</h3>
-				</div>
-				<div class="ui-body ui-body-a">
-					<span>Confirmation send</span>
-				</div>
-			</div>
-			
 			<div data-role="popup" id="popupSendReceivedListError">
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 				<div class="ui-bar ui-bar-a">
@@ -297,6 +288,25 @@
 					
 				</tbody>
 				</table>
+			</div>
+		</div>
+	
+	<!-------------------------------------------------------------------------------->
+	
+		<div id="myNumberSetting" data-role="page">
+			<div data-role="header">
+				<a href="#mainPage" class="ui-btn">Back</a>
+				<h1>Shop Alert</h1>
+				<div>
+					<span>Settings</span>
+				</div>
+			</div>
+			<div data-role="main" class="ui-content">
+				<div>We have tried to read your phone number from SIM card. It is necessary to send automated response. Sometimes it is not possible to read a phone number from SIM card. If this is not your phone number change it.</div>
+				<div>
+					<input id="myPhoneNumberText" type="text" placeholder="My phone number..."/>
+				</div>
+				<button id="myPhoneNumberSave" type="button">Save</button>
 			</div>
 		</div>
 	

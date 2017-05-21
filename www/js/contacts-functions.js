@@ -71,6 +71,58 @@ function findContactsError(error) {
 	
 }
 
+function checkMyNumberFromStorage() {
+		
+	var myNumberInStorage = localStorage.getItem("my_number");
+
+	if (myNumberInStorage === null) {
+		checkNumberFromDevice();
+	} else {
+		$("#myPhoneNumberText").val(myNumberInStorage);
+	}
+	
+}
+
+function checkNumberFromDevice() {
+	
+	logger.log('myNumber', 'try check');
+	try {
+		logger.log('myNumber', 'try');
+		window.plugins.sim.getSimInfo(saveMyNumber, errorMyNumber);
+		logger.log('myNumber', 'try success');
+	} catch(error) {
+		logger.log('myNumber', 'catch');
+		logger.log('myNumber', JSON.stringify(error));
+	}
+	
+}
+
+function saveMyNumber(result) {
+	
+	logger.log('myNumber', 'get my number success');
+	logger.log('myNumber', 'data: ' + JSON.stringify(result));
+	var myNumber = result.phoneNumber;
+	localStorage.setItem("my_number", myNumber);
+	$("#myPhoneNumberText").val(myNumber);
+	logger.log('myNumber', 'number: ' + myNumber);
+	$.mobile.navigate( "#myNumberSetting" );
+	
+}
+
+function errorMyNumber(error) {
+	
+	logger.log('myNumber', 'get my number error');
+	logger.log('myNumber', JSON.stringify(error));
+	$.mobile.navigate( "#myNumberSetting" );
+	
+}
+
+function updateMyNumber() {
+	
+	
+	
+}
+
 function getMyNumber() {
 	
 	return '123456789';

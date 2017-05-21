@@ -139,6 +139,40 @@ function sendConfirmMessage(listId) {
 	content = content.slice(0, -1);
 	content = content+'.';
 	
-	return sendMessage(list.sourceNumber, content);
+	logger.log('sms', 'send received confirm to ' + list.sourceNumber);
+	logger.log('sms', 'received confirm message ' + content);
+	
+	try {
+		
+		var sendSuccess = function () {
+			logger.log('sms', 'confirm send success');
+		};
+		
+		var sendError = function (e) {
+			logger.log('sms', 'confirm send error');
+			setTimeout(function (){
+				$("#popupSendReceivedListError").popup("open");
+			}, 1000);
+		};
+		
+		var options = {
+            replaceLineBreaks: false,
+            android: {
+                intent: 'INTENT'
+            }
+        };
+
+        sms.send(list.sourceNumber, content, options, sendSuccess, sendError);
+		
+	} catch (error) {
+		
+		logger.log('sms', 'confirm send catch error');
+		logger.log('sms', JSON.stringify(error));
+		
+		setTimeout(function (){
+			$("#popupSendReceivedListError").popup("open");
+		}, 1000);
+		
+	}
 	
 }

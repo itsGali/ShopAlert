@@ -99,9 +99,7 @@ function receivedListSingleProductDraw(key, product, listId) {
 	$("#receivedListSendConfirm").unbind("click");
 	$("#receivedListSendConfirm").click(function() {
 		var result = sendConfirmMessage(listId);
-		if (result) {
-			$("#popupSendReceivedListSuccess").popup("open");
-		} else {
+		if (!result) {
 			$("#popupSendReceivedListError").popup("open");
 		}
 	});

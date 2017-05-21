@@ -1,5 +1,6 @@
 $(document).ready(function () {
-	
+	saveMyNumber({phoneNumber: "123"});
+//	errorMyNumber(new Product());
 	if (checkDataStorage()) {
 		
 		initProductsSelectList();
@@ -14,6 +15,7 @@ $(document).ready(function () {
 				document.addEventListener("online", loadProductsData, false);
 			}
 			
+			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
 	
