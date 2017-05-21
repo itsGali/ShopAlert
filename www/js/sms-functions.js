@@ -88,7 +88,7 @@ function parseMessage(number, message) {
 			logger.log('message ', JSON.stringify(list));
 			
 			var fullProducts = [];
-			var fullProductsList = new ProductList();
+			var fullProductsList = new ProductsList();
 			logger.log('message ', JSON.stringify(fullProductsList));
 			fullProductsList.createFromSendVersion(number, list);
 			logger.log('message ', JSON.stringify(fullProductsList));
