@@ -69,4 +69,5 @@
     <plugin name="cordova-plugin-whitelist" spec="1.3.2" />
     <plugin name="cordova-sms-plugin" spec="0.1.11" />
     <plugin name="CordovaSMS" spec="0.0.3" />
+    <plugin name="cordova-plugin-sms" spec="~1.0.5" />
 </widget>

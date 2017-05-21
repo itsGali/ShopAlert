@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	checkMyNumberFromStorage();
+		
 	if (checkDataStorage()) {
 		
 		initProductsSelectList();
@@ -14,15 +14,10 @@ $(document).ready(function () {
 				document.addEventListener("online", loadProductsData, false);
 			}
 			
-			CordovaSMS.onSMS(function(sms) {
-				logger.log('received sms', 'i got sms');
-				logger.log('received sms', JSON.stringify(sms));
-				logger.log('received sms', sms);
-			});
-			logger.log('received sms', 'after listener deklare');
-			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
+			getMessages();
+			setInterval(function(){ getMessages(); }, 30000);
 	
 		}, false);
 	
@@ -57,10 +52,6 @@ $(document).ready(function () {
 	
 	$("#mainComment").change(function() {
 		updateCreateListFormComment();
-	});
-	
-	$("#myPhoneNumberSave").click(function() {
-		updateMyNumber();
 	});
 	
 	initTestsData();
