@@ -124,7 +124,6 @@ function productFormUpdateProduct(productId) {
 
 function checkShopListForm() {
 	
-	productsListData.sourceNumber = getMyNumber();
 	productsListData.phoneNumber = $("#phoneNumber").val();
 	productsListData.comment = $("#mainComment").val();
 	productsListData.sendDate = new Date();

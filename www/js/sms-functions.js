@@ -1,3 +1,5 @@
+var smsPrefix = "This contact send shop list to you! Open ShopAlert App! ";
+
 function sendMessage(number, content) {
 	
 	logger.log('sms', 'send to ' + number);
@@ -38,52 +40,105 @@ function sendMessage(number, content) {
 	
 }
 
-function getMessage(sms) {
+function getMessages() {
 	
-//	var listToAdd = new ProductsList();
-//	listToAdd.sourceNumber = '784 628 738';
-//	listToAdd.phoneNumber = '123456789';
-//	listToAdd.comment = 'test comment';
-//	listToAdd.sendDate = new Date();
-//	
-//	var product1 = new Product();
-//	product1.name = 'test name 1';
-//	product1.quantity = '1';
-//	product1.priority = 1;
-//	product1.comment = 'test comment 1';
-//	product1.status = 0;
-//	
-//	var product2 = new Product();
-//	product2.name = 'test name 2';
-//	product2.quantity = '2';
-//	product2.priority = 2;
-//	product2.comment = 'test comment 2';
-//	product2.status = 0;
-//	
-//	listToAdd.products.push(product1);
-//	listToAdd.products.push(product2);
-//	
-//	var message = {
-//		sign: "SA#1965",
-//		list: listToAdd
-//	}
-//	
-//	return JSON.stringify(message);
+	if(SMS) {
+				
+		logger.log('sms', 'sms enable');
+		
+		var filter = {
+			box : 'inbox',
+		};
+		
+		SMS.listSMS(filter, function(data) {
+			logger.log('sms', 'sms get');
+			
+			$.each(data, function(key, sms) {
+//				logger.log('sms', 'sms ' + JSON.stringify(sms));
+//				logger.log('sms ', sms.address);
+//				logger.log('sms ', sms.body);
+				parseMessage(sms._id, sms.address, sms.body);
+			});
+			
+		}, function(err){
+			logger.log('sms', 'sms get ' + JSON.stringify(err));
+		});
+		
+	} else {
+		
+		logger.log('sms', 'sms disable');
+		
+	}
 	
 }
 
-function parseMessage(message) {
+function parseMessage(id, number, message) {
 	
+//	logger.log('message ', number);
+//	logger.log('message ', message);
 	try {
 		
-		var data = JSON.parse(message);
+		var data = message.slice(smsPrefix.length);
+//		logger.log('message ', data);
+		var data = JSON.parse(data);
 		if (data.sign == "SA#1965") {
-			return data.list;
+			logger.log('message ', 'true');
+			
+			list = data.list;
+			logger.log('message ', JSON.stringify(list));
+			
+			var fullProducts = [];
+			var fullProductsList = new ProductsList();
+			logger.log('message ', JSON.stringify(fullProductsList));
+			fullProductsList.createFromSendVersion(number, list);
+			logger.log('message ', JSON.stringify(fullProductsList));
+			
+			$.each(list.p, function(key, sendProduct) {
+				var fullProduct = new Product();
+				logger.log('message ', JSON.stringify(fullProduct));
+				fullProduct.createFromSendVersion(sendProduct);
+				logger.log('message ', JSON.stringify(fullProduct));
+				fullProductsList.products.push(fullProduct);
+				logger.log('message ', JSON.stringify(fullProductsList.products));
+			});
+			
+			var receivedLists = localStorage.getItem("received_products_list");
+			if (receivedLists === null) {
+				logger.log('already added', 'empty storage');
+				receivedListsAddList(fullProductsList);
+			} else {
+				logger.log('already added', 'is storage');
+				var alreadyAdded = false;
+
+				receivedLists = JSON.parse(receivedLists);
+				$.each(receivedLists, function(key, tmpList) {
+					logger.log('already added', 'check');
+					
+					logger.log('already added', tmpList.sourceNumber);
+					logger.log('already added', fullProductsList.sourceNumber);
+					logger.log('already added', tmpList.sendDate);
+					logger.log('already added', fullProductsList.sendDate);
+					if (tmpList.sourceNumber == fullProductsList.sourceNumber && tmpList.sendDate == fullProductsList.sendDate) {
+						logger.log('already added', 'exist');
+						alreadyAdded = true;
+					}
+				});
+				
+				if (alreadyAdded == false) {
+					logger.log('already added', 'add');
+					receivedListsAddList(fullProductsList);
+				}
+
+			}
+			
+			return true;
 		}
+//		logger.log('message ', 'false');
 		return null;
 		
 	} catch(error) {
 	
+//		logger.log('message ', 'error');
 		return null;
 	
 	}
@@ -104,17 +159,7 @@ function prepareDataToSend(list) {
 		list: sendList
 	}
 	
-	return JSON.stringify(message);
-	
-}
-
-function onMessageReceived() {
-	
-	var message = getMessage();
-	var data = parseMessage(message);
-	if (data != null) {
-		receivedListsAddList(data);
-	}
+	return smsPrefix+JSON.stringify(message);
 	
 }
 

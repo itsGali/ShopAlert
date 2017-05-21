@@ -24,7 +24,7 @@ function initTestsData() {
 //	listToAdd.products.push(product2);
 //	
 //	receivedListsAddList(listToAdd);
-
-	onMessageReceived();
+//
+//	onMessageReceived();
 	
 }
