@@ -17,6 +17,7 @@ $(document).ready(function () {
 			initializeNumberList();
 			receivedProductsListDraw();
 			getMessages();
+			setInterval(function(){ getMessages(); }, 30000);
 	
 		}, false);
 	
