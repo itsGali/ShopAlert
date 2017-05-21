@@ -104,17 +104,27 @@ function parseMessage(id, number, message) {
 			
 			var receivedLists = localStorage.getItem("received_products_list");
 			if (receivedLists === null) {
+				logger.log('already added', 'empty storage');
 				receivedListsAddList(fullProductsList);
 			} else {
+				logger.log('already added', 'is storage');
 				var alreadyAdded = false;
 
 				$.each(receivedLists, function(key, tmpList) {
+					logger.log('already added', 'check');
+					
+					logger.log('already added', tmpList.sourceNumber);
+					logger.log('already added', fullProductsList.sourceNumber);
+					logger.log('already added', tmpList.sendDate);
+					logger.log('already added', fullProductsList.sendDate);
 					if (tmpList.sourceNumber == fullProductsList.sourceNumber && tmpList.sendDate == fullProductsList.sendDate) {
+						logger.log('already added', 'exist');
 						alreadyAdded = true;
 					}
 				});
 				
 				if (alreadyAdded == false) {
+					logger.log('already added', 'add');
 					receivedListsAddList(fullProductsList);
 				}
 
