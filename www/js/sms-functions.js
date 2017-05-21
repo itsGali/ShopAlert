@@ -102,17 +102,23 @@ function parseMessage(id, number, message) {
 				logger.log('message ', JSON.stringify(fullProductsList.products));
 			});
 			
-			receivedListsAddList(fullProductsList);
-			
-			var filter = {
-        		box : 'inbox',
-        		_id : id
-        	};
-        	if(SMS) SMS.deleteSMS(filter, function( n ){
-        		logger.log('message ', 'deleted');
-        	}, function(err){
-        		logger.log('message ', 'delete error');
-        	});
+			var receivedLists = localStorage.getItem("received_products_list");
+			if (receivedLists === null) {
+				receivedListsAddList(fullProductsList);
+			} else {
+				var alreadyAdded = false;
+
+				$.each(receivedLists, function(key, tmpList) {
+					if (tmpList.sourceNumber == fullProductsList.sourceNumber && tmpList.sendDate == fullProductsList.sendDate) {
+						alreadyAdded = true;
+					}
+				});
+				
+				if (alreadyAdded == false) {
+					receivedListsAddList(fullProductsList);
+				}
+
+			}
 			
 			return true;
 		}
