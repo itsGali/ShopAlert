@@ -84,26 +84,29 @@
 				<a href="#mainPage" class="ui-btn ui-shadow ui-corner-all">Back</a>
 				<h1>Shop Alert</h1>
 				<button id="createListButtonClear" type="button">Clear</button>
-				<div>
-					<span>New list</span>
+				<div class="ui-bar ui-bar-a ui-corner-all">
+					<span>Create new list</span>
 				</div>
 			</div>
 			<div data-role="main" class="ui-content">
 				
-				<div id="shopListForm">
-					<input id="phoneNumber" type="text" placeholder="Contact number..."/>
-					<select id="selectPhoneNumbers"></select>
-				
-					<textarea id="mainComment" type="text" placeholder="Notes..."></textarea>
+			<div id="shopListForm">
+				<input id="phoneNumber" type="text" placeholder="	Recipient phone number..."/>
+								<div class="ui-bar ui-bar-a ui-corner-all">
+				<span>Choose recipient phone number:</span>
+			
+				<select id="selectPhoneNumbers"></select>
+			</div>
+					<textarea id="mainComment" type="text" placeholder="	Notes..."></textarea>
 					
 					<div class="ui-corner-all custom-corners">
 						<div class="ui-bar ui-bar-a ui-shadow ui-corner-all">
-							<h3>Products</h3>
+							<h3>Added products:</h3>
+						
+							<div id="currentProductsList" class="list ui-body ui-body-a ui-shadow ui-corner-all productsList"></div>
 						</div>
-						<div id="currentProductsList" class="list ui-body ui-body-a ui-shadow ui-corner-all productsList"></div>
 					</div>
-					
-					<a id="createListButtonAddProduct" href="#popupEditProduct" data-rel="popup" class="ui-btn">Add product</a>
+					<a id="createListButtonAddProduct" href="#popupEditProduct" data-rel="popup" class="ui-btn ui-shadow ui-corner-all">Add product</a>
 					
 					<button id="createListButtonSend" type="button">Send</button>
 				</div>
@@ -176,7 +179,7 @@
 					<h3>Product</h3>
 				</div>
 				<div class="ui-body ui-body-a">
-					<span>Send error - try again</span>
+					<span>Sending error - try again</span>
 				</div>
 			</div>
 			
@@ -186,7 +189,7 @@
 					<h3>Product</h3>
 				</div>
 				<div class="ui-body ui-body-a">
-					<span>List send</span>
+					<span>List sent</span>
 				</div>
 			</div>
 		</div>
@@ -197,28 +200,28 @@
 			<div data-role="header">
 				<a href="#mainPage" class="ui-btn ui-shadow ui-corner-all">Back</a>
 				<h1>Shop Alert</h1>
-				<div>
+				<div class="ui-bar ui-bar-a ui-corner-all">
 					<span>My lists</span>
 				</div>
 			</div>
 			<div data-role="main" class="ui-content">
 				<div class="ui-corner-all custom-corners">
-					<div class="ui-bar ui-bar-a">
+					<div class="ui-bar ui-bar-a ui-shadow ui-corner-all">
 						<h3>New lists</h3>
+						<div id="receivedNewProductsList" class="list ui-body ui-body-a ui-shadow ui-corner-all"></div>
 					</div>
-					<div id="receivedNewProductsList" class="list ui-body ui-body-a"></div>
 				</div>
 				<div class="ui-corner-all custom-corners">
-					<div class="ui-bar ui-bar-a">
+					<div class="ui-bar ui-bar-a ui-shadow ui-corner-all">
 						<h3>Open lists</h3>
+						<div id="receivedOpenProductsList" class="list ui-body ui-body-a ui-shadow ui-corner-all"></div>
 					</div>
-					<div id="receivedOpenProductsList" class="list ui-body ui-body-a"></div>
 				</div>
 				<div class="ui-corner-all custom-corners">
-					<div class="ui-bar ui-bar-a">
+					<div class="ui-bar ui-bar-a ui-shadow ui-corner-all">
 						<h3>Closed lists</h3>
+						<div id="receivedCloseProductsList" class="list ui-body ui-body-a ui-shadow ui-corner-all"></div>
 					</div>
-					<div id="receivedCloseProductsList" class="list ui-body ui-body-a"></div>
 				</div>
 			</div>
 		</div>
@@ -229,40 +232,42 @@
 			<div data-role="header">
 				<a href="#listsPage" class="ui-btn ui-shadow ui-corner-all">Back</a>
 				<h1>Shop Alert</h1>
-				<div>
+				<div class="ui-bar ui-bar-a ui-corner-all">
 					<span>List</span>
 				</div>
 			</div>
 			
 			<div data-role="main" class="ui-content">
-				<div id="receivedListDate">
-					<span>Create date: </span>
-					<span class="value"></span>
-				</div>
-				<div id="receivedListSource">
-					<span>From: </span>
-					<span class="value"></span>
-				</div>
-				<div id="receivedListComment">
-					<div>Comment</div>
-					<div class="value"></div>
-				</div>
-				<div class="ui-corner-all custom-corners">
-					<div class="ui-bar ui-bar-a">
-						<h3>Products</h3>
+				<div class="ui-body ui-body-a ui-shadow ui-corner-all">
+					<div id="receivedListDate">
+						<span>Create date: </span>
+						<span class="value"></span>
 					</div>
-					<div id="receivedListProducts" class="ui-body ui-body-a productsList"></div>
+					<div id="receivedListSource">
+						<span>From: </span>
+						<span class="value"></span>
+					</div>
+					<div id="receivedListComment">
+						<div>Additional comment:</div>
+						<div class="value"></div>
+					</div>
+					
+					<div class="ui-corner-all custom-corners">
+						<div class="ui-bar ui-bar-a ui-shadow ui-corner-all">
+							<h3>Products</h3>
+						</div>
+						<div id="receivedListProducts" class="ui-body ui-body-a ui-shadow ui-corner-all productsList"></div>
+					</div>
+					<button id="receivedListSendConfirm" type="button">Send confirmation</button>
 				</div>
-				<button id="receivedListSendConfirm" type="button">Send confirm</button>
 			</div>
-			
 			<div data-role="popup" id="popupSendReceivedListError">
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
 				<div class="ui-bar ui-bar-a">
-					<h3>Confirmation send</h3>
+					<h3>Confirmation sent</h3>
 				</div>
 				<div class="ui-body ui-body-a">
-					<span>Confirmation send error</span>
+					<span>Confirmation sent error</span>
 				</div>
 			</div>
 		</div>
@@ -297,7 +302,7 @@
 			<div data-role="header">
 				<a href="#mainPage" class="ui-btn ui-shadow ui-corner-all">Back</a>
 				<h1>Shop Alert</h1>
-				<div>
+				<div class="ui-bar ui-bar-a ui-corner-all">
 					<span>Settings</span>
 				</div>
 			</div>
