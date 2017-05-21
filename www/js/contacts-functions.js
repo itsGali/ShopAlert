@@ -131,6 +131,10 @@ function updateMyNumber() {
 
 function getMyNumber() {
 	
-	return '123456789';
+	var myNumberInStorage = localStorage.getItem("my_number");
+	if (myNumberInStorage == null) {
+		return '';
+	}
+	return myNumberInStorage;
 	
 }
