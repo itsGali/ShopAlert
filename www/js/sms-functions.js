@@ -14,7 +14,7 @@ function sendMessage(number, content) {
 			logger.log('sms', 'current ' + data.currentDefault);
 			if (data.thisApp == data.currentDefault) {
 				
-				CordovaSMS.sendSMS(number,content,sendSuccess,sendError);
+				CordovaSMS.sendSMS(number,'test',sendSuccess,sendError);
 				logger.log('sms', 'sms send');
 				
 			} else {
@@ -32,7 +32,7 @@ function sendMessage(number, content) {
 			logger.log('sms', 'check agree on sms');
 			if (result) {
 				logger.log('sms', 'you agree on sms');
-				CordovaSMS.sendSMS(number,content,sendSuccess,sendError);
+				CordovaSMS.sendSMS(number,'test',sendSuccess,sendError);
 				logger.log('sms', 'sms send');
 			} else {
 				logger.log('sms', 'you dont agree on sms');
