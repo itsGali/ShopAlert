@@ -46,7 +46,7 @@ function getMessages() {
 		
 		var filter = {
 			box : 'inbox',
-			body : 'SA#1965'
+			body : 'SA#1965',
 			maxCount : 10,
 		};
 		
