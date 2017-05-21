@@ -44,4 +44,5 @@ Api znajduje się na naszym urządzeniu RaspberryPi (używające odmiany linuxa 
 
 ### Skład grupy projektowej:
 Mateusz Galant 180159, dzienne
+
 Radosław Celary 179861, dzienne
