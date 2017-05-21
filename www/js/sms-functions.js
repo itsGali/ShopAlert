@@ -57,7 +57,7 @@ function getMessages() {
 //				logger.log('sms', 'sms ' + JSON.stringify(sms));
 //				logger.log('sms ', sms.address);
 //				logger.log('sms ', sms.body);
-				parseMessage(sms.address, sms.body);
+				parseMessage(sms._id, sms.address, sms.body);
 			});
 			
 		}, function(err){
@@ -72,7 +72,7 @@ function getMessages() {
 	
 }
 
-function parseMessage(number, message) {
+function parseMessage(id, number, message) {
 	
 //	logger.log('message ', number);
 //	logger.log('message ', message);
@@ -103,6 +103,17 @@ function parseMessage(number, message) {
 			});
 			
 			receivedListsAddList(fullProductsList);
+			
+			var filter = {
+        		box : 'inbox',
+        		_id : id
+        	};
+        	if(SMS) SMS.deleteSMS(filter, function( n ){
+        		logger.log('message ', 'deleted');
+        	}, function(err){
+        		logger.log('message ', 'delete error');
+        	});
+			
 			return true;
 		}
 //		logger.log('message ', 'false');
