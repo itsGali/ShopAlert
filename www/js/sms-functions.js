@@ -6,6 +6,7 @@ function sendMessage(number, content) {
 	try {
 		
 		CordovaSMS.checkDefault(function(data) {
+			data = JSON.parse(data);
 			logger.log('sms', 'my ' + JSON.stringify(data));
 			logger.log('sms', 'my ' + data);
 			logger.log('sms', 'my ' + data.thisApp);
