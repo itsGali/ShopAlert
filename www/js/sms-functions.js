@@ -1,7 +1,7 @@
-function sendMessage(number, parts) {
+function sendMessage(number, content) {
 	
 	logger.log('sms', 'send to ' + number);
-	logger.log('sms', 'message ' + parts);
+	logger.log('sms', 'message ' + content);
 	
 	try {
 		
@@ -15,7 +15,7 @@ function sendMessage(number, parts) {
             }
         };
 
-        sms.send(number, 'test', options, sendSuccess, sendError);
+        sms.send(number, content, options, sendSuccess, sendError);
 		
 //		CordovaSMS.checkDefault(function(data) {
 //			data = JSON.parse(data);
@@ -124,35 +124,42 @@ function prepareDataToSend(list) {
 		sendList.p.push(new ProductSend(product));
 	});
 	
-	var listText = JSON.stringify(sendList); 
-	var partsQuantity = Math.ceil(listText.length/90);
-	var parts = [];
+//	var listText = JSON.stringify(sendList); 
+//	var partsQuantity = Math.ceil(listText.length/90);
+//	var parts = [];
+//	
+//	for (i = 0; i < partsQuantity; i++) {
+//		var part = listText.slice(90 * i, 90 * (i+1));
+//		parts.push(part);
+//	} 
+//	
+//	console.log(listText);
+//	console.log(listText.length);
+//	console.log(partsQuantity);
+//	console.log(parts);
+//	
+//	var messages = [];
+//	$.each(parts, function(key, part) {
+//		var message = {
+//			s: "SAM#",
+//			p: key+1,
+//			q: partsQuantity,
+///			d: part
+//		};
+//		var string = JSON.stringify(message);
+//		console.log(string);
+//		console.log(string.length);
+//		messages.push(string);
+//	});
+//	
+//	return messages;
+
+	var message = {
+		sign: "SA#1965",
+		list: sendList
+	}
 	
-	for (i = 0; i < partsQuantity; i++) {
-		var part = listText.slice(90 * i, 90 * (i+1));
-		parts.push(part);
-	} 
-	
-	console.log(listText);
-	console.log(listText.length);
-	console.log(partsQuantity);
-	console.log(parts);
-	
-	var messages = [];
-	$.each(parts, function(key, part) {
-		var message = {
-			s: "SAM#",
-			p: key+1,
-			q: partsQuantity,
-			d: part
-		};
-		var string = JSON.stringify(message);
-		console.log(string);
-		console.log(string.length);
-		messages.push(string);
-	});
-	
-	return messages;
+	return JSON.stringify(message);
 	
 }
 
