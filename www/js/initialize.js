@@ -37,17 +37,7 @@ $(document).ready(function () {
 	
 	$("#popupSendListConfirmSend").click(function() {
 		$("#popupSendListConfirm").popup("close");
-		var result = trySendShopListData();
-		if (result) {
-			productDataClear();
-			setTimeout(function (){
-				$("#popupSendListSendSuccess").popup("open");
-			}, 1000);
-		} else {
-			setTimeout(function (){
-				$("#popupSendListSendError").popup("open");
-			}, 1000);
-		}
+		trySendShopListData();
 	});
 	
 	$("#popupSendListConfirmBack").click(function() {

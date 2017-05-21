@@ -5,8 +5,17 @@ function sendMessage(number, content) {
 	
 	try {
 		
-		var sendSuccess = function () { logger.log('sms', 'send success'); };
-		var sendError = function (e) { logger.log('sms', 'send error'); };
+		var sendSuccess = function () {
+			logger.log('sms', 'send success');
+			productDataClear();
+		};
+		
+		var sendError = function (e) {
+			logger.log('sms', 'send error');
+			setTimeout(function (){
+				$("#popupSendListSendError").popup("open");
+			}, 1000);
+		};
 		
 		var options = {
             replaceLineBreaks: false,
@@ -17,47 +26,14 @@ function sendMessage(number, content) {
 
         sms.send(number, content, options, sendSuccess, sendError);
 		
-//		CordovaSMS.checkDefault(function(data) {
-//			data = JSON.parse(data);
-//			logger.log('sms', 'my ' + data.thisApp);
-//			logger.log('sms', 'current ' + data.currentDefault);
-//			if (data.thisApp == data.currentDefault) {
-//				
-//				$.each(parts, function(key, part) {
-//					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
-//					logger.log('sms', 'sms send part ' + key);
-//				});
-//				
-//			} else {
-//				
-//				logger.log('sms', 'try set default');
-//				CordovaSMS.setDefault(null,null,"com.app.shopalert");
-//				logger.log('sms', 'try set default end');
-//				
-//			}
-//			logger.log('sms', 'current ' + result);
-//       }, 
-//      function(){});
-//		
-//		CordovaSMS.onDefaultSelected(function(result) {
-//			logger.log('sms', 'check agree on sms');
-//			if (result) {
-//				logger.log('sms', 'you agree on sms');
-//				
-//				$.each(parts, function(key, part) {
-//					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
-//					logger.log('sms', 'sms send part ' + key);
-//				});
-//				
-//			} else {
-//				logger.log('sms', 'you dont agree on sms');
-//			}
-//		});
-		
 	} catch (error) {
 		
 		logger.log('sms', 'send catch error');
 		logger.log('sms', JSON.stringify(error));
+		
+		setTimeout(function (){
+			$("#popupSendListSendError").popup("open");
+		}, 1000);
 		
 	}
 	
@@ -89,7 +65,7 @@ function getMessage() {
 	listToAdd.products.push(product2);
 	
 	var message = {
-		sign: "SHOPALERTMESSAGE",
+		sign: "SA#1965",
 		list: listToAdd
 	}
 	
@@ -102,7 +78,7 @@ function parseMessage(message) {
 	try {
 		
 		var data = JSON.parse(message);
-		if (data.sign == "SHOPALERTMESSAGE") {
+		if (data.sign == "SA#1965") {
 			return data.list;
 		}
 		return null;
@@ -123,36 +99,6 @@ function prepareDataToSend(list) {
 	$.each(list.products, function(key, product) {
 		sendList.p.push(new ProductSend(product));
 	});
-	
-//	var listText = JSON.stringify(sendList); 
-//	var partsQuantity = Math.ceil(listText.length/90);
-//	var parts = [];
-//	
-//	for (i = 0; i < partsQuantity; i++) {
-//		var part = listText.slice(90 * i, 90 * (i+1));
-//		parts.push(part);
-//	} 
-//	
-//	console.log(listText);
-//	console.log(listText.length);
-//	console.log(partsQuantity);
-//	console.log(parts);
-//	
-//	var messages = [];
-//	$.each(parts, function(key, part) {
-//		var message = {
-//			s: "SAM#",
-//			p: key+1,
-//			q: partsQuantity,
-///			d: part
-//		};
-//		var string = JSON.stringify(message);
-//		console.log(string);
-//		console.log(string.length);
-//		messages.push(string);
-//	});
-//	
-//	return messages;
 
 	var message = {
 		sign: "SA#1965",

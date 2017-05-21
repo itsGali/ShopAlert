@@ -146,10 +146,17 @@ function checkShopListForm() {
 function trySendShopListData() {
 	
 	if (productsListData.phoneNumber != '' && productsListData.products.length > 0) {
+		
 		var message = prepareDataToSend(productsListData);
-		return sendMessage($("#phoneNumber").val(), message);
+		sendMessage($("#phoneNumber").val(), message);
+	
+	} else {
+	
+		setTimeout(function (){
+			$("#popupSendListSendError").popup("open");
+		}, 1000);
+
 	}
-	return false;
 	
 }
 
