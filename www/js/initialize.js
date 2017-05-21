@@ -1,5 +1,5 @@
 $(document).ready(function () {
-	checkMyNumberFromStorage();
+	
 	if (checkDataStorage()) {
 		
 		initProductsSelectList();
@@ -14,12 +14,28 @@ $(document).ready(function () {
 				document.addEventListener("online", loadProductsData, false);
 			}
 			
-			CordovaSMS.onSMS(function(sms) {
-				logger.log('received sms', 'i got sms');
-				logger.log('received sms', JSON.stringify(sms));
-				logger.log('received sms', sms);
-			});
-			logger.log('received sms', 'after listener deklare');
+			if(SMS) {
+				
+				logger.log('sms', 'sms enable');
+				
+				var filter = {
+					box : 'inbox',
+					maxCount : 1
+				};
+				
+				SMS.listSMS(filter, function(data) {
+					logger.log('sms', 'sms get');
+					logger.log('sms', JSON.stringify(data));
+				}, function(err){
+					logger.log('sms', 'sms get ' + JSON.stringify(err));
+				});
+				
+			} else {
+				
+				logger.log('sms', 'sms disable');
+				
+			}
+			
 			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
