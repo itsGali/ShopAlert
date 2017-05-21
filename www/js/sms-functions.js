@@ -7,14 +7,18 @@ function sendMessage(number, content) {
 		
 		CordovaSMS.checkDefault(function(data) {
 			data = JSON.parse(data);
-			logger.log('sms', 'my ' + JSON.stringify(data));
-			logger.log('sms', 'my ' + data);
 			logger.log('sms', 'my ' + data.thisApp);
 			logger.log('sms', 'current ' + data.currentDefault);
 			if (data.thisApp == data.currentDefault) {
-				var result = true;
+				
+				
+				
 			} else {
-				var result = false;
+				
+				logger.log('sms', 'try set default');
+				CordovaSMS.setDefault(null,null,"com.app.shopalert");
+				logger.log('sms', 'try set default end');
+				
 			}
 			logger.log('sms', 'current ' + result);
         }, 
