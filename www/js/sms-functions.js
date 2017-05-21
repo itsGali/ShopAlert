@@ -52,8 +52,12 @@ function getMessages() {
 		
 		SMS.listSMS(filter, function(data) {
 			logger.log('sms', 'sms get');
-			logger.log('sms', data.address);
-			logger.log('sms', data.body);
+			
+			$.each(data, function(key, sms) {
+				logger.log('sms', sms.address);
+				logger.log('sms', sms.body);
+			});
+			
 		}, function(err){
 			logger.log('sms', 'sms get ' + JSON.stringify(err));
 		});
