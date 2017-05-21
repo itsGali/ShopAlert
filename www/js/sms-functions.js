@@ -93,7 +93,7 @@ function parseMessage(number, message) {
 			fullProductsList.createFromSendVersion(number, list);
 			logger.log('message ', JSON.stringify(fullProductsList));
 			
-			$.each(list.products, function(key, sendProduct) {
+			$.each(list.p, function(key, sendProduct) {
 				var fullProduct = new Product();
 				logger.log('message ', JSON.stringify(fullProduct));
 				fullProduct.createFromSendVersion(sendProduct);
