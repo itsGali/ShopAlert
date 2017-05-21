@@ -15,7 +15,7 @@ function sendMessage(number, parts) {
 			if (data.thisApp == data.currentDefault) {
 				
 				$.each(parts, function(key, part) {
-					CordovaSMS.sendSMS(number,part,sendSuccess,sendError);
+					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
 					logger.log('sms', 'sms send part ' + key);
 				});
 				
@@ -36,7 +36,7 @@ function sendMessage(number, parts) {
 				logger.log('sms', 'you agree on sms');
 				
 				$.each(parts, function(key, part) {
-					CordovaSMS.sendSMS(number,part,sendSuccess,sendError);
+					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
 					logger.log('sms', 'sms send part ' + key);
 				});
 				
