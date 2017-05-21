@@ -57,7 +57,10 @@ function getMessages() {
 //				logger.log('sms', 'sms ' + JSON.stringify(sms));
 //				logger.log('sms ', sms.address);
 //				logger.log('sms ', sms.body);
-				parseMessage(sms.address, sms.body);
+				result = parseMessage(sms.address, sms.body);
+				if (result != null) {
+					receivedListsAddList(result);
+				}
 			});
 			
 		}, function(err){
@@ -83,7 +86,19 @@ function parseMessage(number, message) {
 		var data = JSON.parse(data);
 		if (data.sign == "SA#1965") {
 			logger.log('message ', 'true');
-			return data.list;
+			
+			list = data.list;
+			var fullProducts = [];
+			var fullProductsList = new ProductList();
+			fullProductsList.createFromSendVersion(number, list);
+			
+			$.each(list.products, function(key, sendProduct) {
+				var fullProduct = new Product();
+				fullProduct.createFromSendVersion(sendProduct);
+				fullProductsList.products.push(fullProduct);
+			});
+			
+			return fullProductsList;
 		}
 //		logger.log('message ', 'false');
 		return null;
