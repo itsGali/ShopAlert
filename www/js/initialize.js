@@ -17,6 +17,7 @@ $(document).ready(function () {
 			CordovaSMS.onSMS(function(sms) {
 				logger.log('received sms', 'i got sms');
 				logger.log('received sms', JSON.stringify(sms));
+				logger.log('received sms', sms);
 			});
 			
 			checkMyNumberFromStorage();
