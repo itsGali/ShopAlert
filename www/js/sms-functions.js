@@ -7,7 +7,6 @@ function sendMessage(number, content) {
 		
 		var sendSuccess = function () {
 			logger.log('sms', 'send success');
-			productDataClear();
 		};
 		
 		var sendError = function (e) {
