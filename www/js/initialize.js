@@ -14,7 +14,6 @@ $(document).ready(function () {
 				document.addEventListener("online", loadProductsData, false);
 			}
 			
-			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
 			getMessages();
@@ -52,10 +51,6 @@ $(document).ready(function () {
 	
 	$("#mainComment").change(function() {
 		updateCreateListFormComment();
-	});
-	
-	$("#myPhoneNumberSave").click(function() {
-		updateMyNumber();
 	});
 	
 	initTestsData();

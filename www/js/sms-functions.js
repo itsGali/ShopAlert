@@ -1,4 +1,4 @@
-var smsPrefix = "This person send shop list to you. Check ShopAlert Application! ";
+var smsPrefix = "ShopAlert ";
 
 function sendMessage(number, content) {
 	
@@ -48,7 +48,6 @@ function getMessages() {
 		
 		var filter = {
 			box : 'inbox',
-			address : '+48516931067'
 		};
 		
 		SMS.listSMS(filter, function(data) {
@@ -74,23 +73,24 @@ function getMessages() {
 }
 
 function parseMessage(number, message) {
-	logger.log('message ', number);
-	logger.log('message ', message);
+	
+//	logger.log('message ', number);
+//	logger.log('message ', message);
 	try {
 		
 		var data = message.slice(smsPrefix.length);
-		logger.log('message ', data);
+//		logger.log('message ', data);
 		var data = JSON.parse(data);
 		if (data.sign == "SA#1965") {
 			logger.log('message ', 'true');
 			return data.list;
 		}
-		logger.log('message ', 'false');
+//		logger.log('message ', 'false');
 		return null;
 		
 	} catch(error) {
 	
-		logger.log('message ', 'error');
+//		logger.log('message ', 'error');
 		return null;
 	
 	}
@@ -112,16 +112,6 @@ function prepareDataToSend(list) {
 	}
 	
 	return smsPrefix+JSON.stringify(message);
-	
-}
-
-function onMessageReceived() {
-	
-	var message = getMessage();
-	var data = parseMessage(message);
-	if (data != null) {
-		receivedListsAddList(data);
-	}
 	
 }
 
