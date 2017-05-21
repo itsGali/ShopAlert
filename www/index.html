@@ -115,27 +115,32 @@
 			
 			<div data-role="popup" id="popupEditProduct">
 				<a href="#" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn-a ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-				<div class="ui-bar ui-bar-a">
+				<div class="ui-bar ui-bar-a ui-shadow ui-corner-all">
 					<h3>Product</h3>
 				</div>
-				<div class="ui-body ui-body-a">
+				<div class="ui-body ui-body-a ui-shadow ui-corner-all">
 					<input id="editProductName" type="text" placeholder="Product name..."/>
 					<div>
 						<select id="editProductSelectGroups"></select>
 						<select id="editProductSelectProducts"></select>
 					</div>
-					<input id="editProductQuantity" type="number" placeholder="Product quantity..." min="1" value="1"/>
-					<fieldset id="editProductPriority" data-role="controlgroup" data-type="horizontal">
-						<legend>Priority</legend>
-						<input id="editProductPriorityLow" name="priority" value="0" type="radio">
-						<label for="editProductPriorityLow">Low</label>
-						<input id="editProductPriorityNormal" name="priority" value="1" checked="checked" type="radio">
-						<label for="editProductPriorityNormal">Normal</label>
-						<input id="editProductPriorityImportant" name="priority" value="2" type="radio">
-						<label for="editProductPriorityImportant">Important</label>
-						<input id="editProductPriorityNecessary" name="priority" value="3" type="radio">
-						<label for="editProductPriorityNecessary">Necessary</label>
-					</fieldset>
+					<div class="ui-body ui-body-a  ui-corner-all">
+						<legend>Set product quantity</legend>
+						<input id="editProductQuantity" type="number" placeholder="Product quantity..." min="1" value="1"/>
+					</div>
+					<div class="ui-body ui-body-a ui-corner-all">
+						<fieldset id="editProductPriority" data-role="controlgroup" data-type="horizontal">
+							<legend>Set product priority</legend>
+							<input id="editProductPriorityLow" name="priority" value="0" type="radio">
+							<label for="editProductPriorityLow">Low</label>
+							<input id="editProductPriorityNormal" name="priority" value="1" checked="checked" type="radio">
+							<label for="editProductPriorityNormal">Normal</label>
+							<input id="editProductPriorityImportant" name="priority" value="2" type="radio">
+							<label for="editProductPriorityImportant">Important</label>
+							<input id="editProductPriorityNecessary" name="priority" value="3" type="radio">
+							<label for="editProductPriorityNecessary">Necessary</label>
+						</fieldset>
+					</div>
 					<input id="editProductComment" type="text" placeholder="Product comment..."/>
 					<button id="editProductSave" type="button">Save</button>
 				</div>
