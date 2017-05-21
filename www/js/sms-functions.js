@@ -110,6 +110,7 @@ function parseMessage(id, number, message) {
 				logger.log('already added', 'is storage');
 				var alreadyAdded = false;
 
+				receivedLists = JSON.parse(receivedLists);
 				$.each(receivedLists, function(key, tmpList) {
 					logger.log('already added', 'check');
 					
