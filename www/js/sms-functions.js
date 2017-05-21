@@ -8,42 +8,51 @@ function sendMessage(number, parts) {
 		var sendSuccess = function () { logger.log('sms', 'send success'); };
 		var sendError = function (e) { logger.log('sms', 'send error'); };
 		
-		CordovaSMS.checkDefault(function(data) {
-			data = JSON.parse(data);
-			logger.log('sms', 'my ' + data.thisApp);
-			logger.log('sms', 'current ' + data.currentDefault);
-			if (data.thisApp == data.currentDefault) {
-				
-				$.each(parts, function(key, part) {
-					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
-					logger.log('sms', 'sms send part ' + key);
-				});
-				
-			} else {
-				
-				logger.log('sms', 'try set default');
-				CordovaSMS.setDefault(null,null,"com.app.shopalert");
-				logger.log('sms', 'try set default end');
-				
-			}
-			logger.log('sms', 'current ' + result);
-        }, 
-        function(){});
+		var options = {
+            replaceLineBreaks: false,
+            android: {
+                intent: 'INTENT'
+            }
+        };
+
+        sms.send(number, 'test', options, sendSuccess, sendError);
 		
-		CordovaSMS.onDefaultSelected(function(result) {
-			logger.log('sms', 'check agree on sms');
-			if (result) {
-				logger.log('sms', 'you agree on sms');
-				
-				$.each(parts, function(key, part) {
-					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
-					logger.log('sms', 'sms send part ' + key);
-				});
-				
-			} else {
-				logger.log('sms', 'you dont agree on sms');
-			}
-		});
+//		CordovaSMS.checkDefault(function(data) {
+//			data = JSON.parse(data);
+//			logger.log('sms', 'my ' + data.thisApp);
+//			logger.log('sms', 'current ' + data.currentDefault);
+//			if (data.thisApp == data.currentDefault) {
+//				
+//				$.each(parts, function(key, part) {
+//					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
+//					logger.log('sms', 'sms send part ' + key);
+//				});
+//				
+//			} else {
+//				
+//				logger.log('sms', 'try set default');
+//				CordovaSMS.setDefault(null,null,"com.app.shopalert");
+//				logger.log('sms', 'try set default end');
+//				
+//			}
+//			logger.log('sms', 'current ' + result);
+//       }, 
+//      function(){});
+//		
+//		CordovaSMS.onDefaultSelected(function(result) {
+//			logger.log('sms', 'check agree on sms');
+//			if (result) {
+//				logger.log('sms', 'you agree on sms');
+//				
+//				$.each(parts, function(key, part) {
+//					setTimeout(function(){ CordovaSMS.sendSMS(number,part,sendSuccess,sendError); }, 1000);
+//					logger.log('sms', 'sms send part ' + key);
+//				});
+//				
+//			} else {
+//				logger.log('sms', 'you dont agree on sms');
+//			}
+//		});
 		
 	} catch (error) {
 		
