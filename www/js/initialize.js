@@ -14,13 +14,14 @@ $(document).ready(function () {
 				document.addEventListener("online", loadProductsData, false);
 			}
 			
+			CordovaSMS.onSMS(function(sms) {
+				logger.log('received sms', 'i got sms');
+				logger.log('received sms', JSON.stringify(sms));
+			});
+			
 			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
-			
-			CordovaSMS.onSMS(function(sms) {
-				getMessage(sms);
-			});
 	
 		}, false);
 	
