@@ -1,3 +1,7 @@
+CordovaSMS.onSMS(function(sms) {
+    getMessage(sms);
+});
+
 $(document).ready(function () {
 	checkMyNumberFromStorage();
 	if (checkDataStorage()) {

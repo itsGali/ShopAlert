@@ -38,7 +38,11 @@ function sendMessage(number, content) {
 	
 }
 
-function getMessage() {
+function getMessage(sms) {
+	
+	logger.log('sms', 'i got sms');
+	logger.log('sms', JSON.stringify(sms));
+	return '';
 	
 	var listToAdd = new ProductsList();
 	listToAdd.sourceNumber = '784 628 738';
