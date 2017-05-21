@@ -57,10 +57,7 @@ function getMessages() {
 //				logger.log('sms', 'sms ' + JSON.stringify(sms));
 //				logger.log('sms ', sms.address);
 //				logger.log('sms ', sms.body);
-				result = parseMessage(sms.address, sms.body);
-				if (result != null) {
-					receivedListsAddList(result);
-				}
+				parseMessage(sms.address, sms.body);
 			});
 			
 		}, function(err){
@@ -88,17 +85,25 @@ function parseMessage(number, message) {
 			logger.log('message ', 'true');
 			
 			list = data.list;
+			logger.log('message ', JSON.stringify(list));
+			
 			var fullProducts = [];
 			var fullProductsList = new ProductList();
+			logger.log('message ', JSON.stringify(fullProductsList));
 			fullProductsList.createFromSendVersion(number, list);
+			logger.log('message ', JSON.stringify(fullProductsList));
 			
 			$.each(list.products, function(key, sendProduct) {
 				var fullProduct = new Product();
+				logger.log('message ', JSON.stringify(fullProduct));
 				fullProduct.createFromSendVersion(sendProduct);
+				logger.log('message ', JSON.stringify(fullProduct));
 				fullProductsList.products.push(fullProduct);
+				logger.log('message ', JSON.stringify(fullProductsList.products));
 			});
 			
-			return fullProductsList;
+			receivedListsAddList(fullProductsList);
+			return true;
 		}
 //		logger.log('message ', 'false');
 		return null;
