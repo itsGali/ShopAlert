@@ -1,7 +1,7 @@
-function sendMessage(number, content) {
+function sendMessage(number, parts) {
 	
 	logger.log('sms', 'send to ' + number);
-	logger.log('sms', 'message ' + content);
+	logger.log('sms', 'message ' + parts);
 	
 	try {
 		
@@ -14,8 +14,10 @@ function sendMessage(number, content) {
 			logger.log('sms', 'current ' + data.currentDefault);
 			if (data.thisApp == data.currentDefault) {
 				
-				CordovaSMS.sendSMS(number,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',sendSuccess,sendError);
-				logger.log('sms', 'sms send');
+				$.each(parts, function(key, part) {
+					CordovaSMS.sendSMS(number,part,sendSuccess,sendError);
+					logger.log('sms', 'sms send part ' + key);
+				});
 				
 			} else {
 				
@@ -32,8 +34,12 @@ function sendMessage(number, content) {
 			logger.log('sms', 'check agree on sms');
 			if (result) {
 				logger.log('sms', 'you agree on sms');
-				CordovaSMS.sendSMS(number,'aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa',sendSuccess,sendError);
-				logger.log('sms', 'sms send');
+				
+				$.each(parts, function(key, part) {
+					CordovaSMS.sendSMS(number,part,sendSuccess,sendError);
+					logger.log('sms', 'sms send part ' + key);
+				});
+				
 			} else {
 				logger.log('sms', 'you dont agree on sms');
 			}
@@ -102,12 +108,42 @@ function parseMessage(message) {
 
 function prepareDataToSend(list) {
 	
-	var message = {
-		sign: "SHOPALERTMESSAGE",
-		list: list
-	}
+	var sendProducts = [];
+	var sendList = new ProductsListSend(list);
 	
-	return JSON.stringify(message);
+	$.each(list.products, function(key, product) {
+		sendList.p.push(new ProductSend(product));
+	});
+	
+	var listText = JSON.stringify(sendList); 
+	var partsQuantity = Math.ceil(listText.length/90);
+	var parts = [];
+	
+	for (i = 0; i < partsQuantity; i++) {
+		var part = listText.slice(90 * i, 90 * (i+1));
+		parts.push(part);
+	} 
+	
+	console.log(listText);
+	console.log(listText.length);
+	console.log(partsQuantity);
+	console.log(parts);
+	
+	var messages = [];
+	$.each(parts, function(key, part) {
+		var message = {
+			s: "SAM#",
+			p: key+1,
+			q: partsQuantity,
+			d: part
+		};
+		var string = JSON.stringify(message);
+		console.log(string);
+		console.log(string.length);
+		messages.push(string);
+	});
+	
+	return messages;
 	
 }
 
