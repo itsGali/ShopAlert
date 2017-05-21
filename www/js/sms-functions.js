@@ -38,37 +38,31 @@ function sendMessage(number, content) {
 	
 }
 
-function getMessage(sms) {
+function getMessages() {
 	
-//	var listToAdd = new ProductsList();
-//	listToAdd.sourceNumber = '784 628 738';
-//	listToAdd.phoneNumber = '123456789';
-//	listToAdd.comment = 'test comment';
-//	listToAdd.sendDate = new Date();
-//	
-//	var product1 = new Product();
-//	product1.name = 'test name 1';
-//	product1.quantity = '1';
-//	product1.priority = 1;
-//	product1.comment = 'test comment 1';
-//	product1.status = 0;
-//	
-//	var product2 = new Product();
-//	product2.name = 'test name 2';
-//	product2.quantity = '2';
-//	product2.priority = 2;
-//	product2.comment = 'test comment 2';
-//	product2.status = 0;
-//	
-//	listToAdd.products.push(product1);
-//	listToAdd.products.push(product2);
-//	
-//	var message = {
-//		sign: "SA#1965",
-//		list: listToAdd
-//	}
-//	
-//	return JSON.stringify(message);
+	if(SMS) {
+				
+		logger.log('sms', 'sms enable');
+		
+		var filter = {
+			box : 'inbox',
+//			body : 'SA#1965'
+			maxCount : 10,
+		};
+		
+		SMS.listSMS(filter, function(data) {
+			logger.log('sms', 'sms get');
+			logger.log('sms', data.address);
+			logger.log('sms', data.body);
+		}, function(err){
+			logger.log('sms', 'sms get ' + JSON.stringify(err));
+		});
+		
+	} else {
+		
+		logger.log('sms', 'sms disable');
+		
+	}
 	
 }
 

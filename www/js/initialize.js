@@ -14,31 +14,10 @@ $(document).ready(function () {
 				document.addEventListener("online", loadProductsData, false);
 			}
 			
-			if(SMS) {
-				
-				logger.log('sms', 'sms enable');
-				
-				var filter = {
-					box : 'inbox',
-					maxCount : 1
-				};
-				
-				SMS.listSMS(filter, function(data) {
-					logger.log('sms', 'sms get');
-					logger.log('sms', JSON.stringify(data));
-				}, function(err){
-					logger.log('sms', 'sms get ' + JSON.stringify(err));
-				});
-				
-			} else {
-				
-				logger.log('sms', 'sms disable');
-				
-			}
-			
 			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
+			getMessages();
 	
 		}, false);
 	
