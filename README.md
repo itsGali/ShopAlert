@@ -1,5 +1,7 @@
 # ShopAlert
 
+![shopalert](https://raw.githubusercontent.com/itsGali/ShopAlert/master/res/iconoriginal.png)
+
 Aplikacja "Shop Alert" jest implementacją zaspokojenia potrzeby przesyłania i zachowania listy zakupów pomiędzy dwoma urządzeniami. Pierwszy użytkownik uruchamia aplikację, wybiera produkty z listy (zasilonej ze zdalnego api lub dodając własne), po czym tworzy listę i wysyła do wybranego użytkownika (numer telefonu lub książka adresowa). Dane przekształcane są do odpowiedniego formatu i przesyłane przez wiadomość sms na wybrany numer. Drugi użytkownik odbiera wiadomość w aplikacji. Jest tam w postaci listy zakupów, które można oznaczyć jako kupione bądź nie dostępne (jeśli nie dostępny aplikacja może poinformować nadawce o niedostępności produktu). Po oznaczeniu wszystkich produktów wysyłana zostaje wiadomość ze statusem zakupów do użytkownika pierwszego.
 
 
