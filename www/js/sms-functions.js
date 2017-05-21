@@ -1,4 +1,4 @@
-var smsPrefix = "ShopAlert ";
+var smsPrefix = "This person send shop list to you. Check ShopAlert Application! ";
 
 function sendMessage(number, content) {
 	
