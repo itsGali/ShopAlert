@@ -1,7 +1,3 @@
-CordovaSMS.onSMS(function(sms) {
-    getMessage(sms);
-});
-
 $(document).ready(function () {
 	checkMyNumberFromStorage();
 	if (checkDataStorage()) {
@@ -21,6 +17,10 @@ $(document).ready(function () {
 			checkMyNumberFromStorage();
 			initializeNumberList();
 			receivedProductsListDraw();
+			
+			CordovaSMS.onSMS(function(sms) {
+				getMessage(sms);
+			});
 	
 		}, false);
 	
