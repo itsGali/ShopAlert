@@ -1,6 +1,5 @@
 $(document).ready(function () {
-	saveMyNumber({phoneNumber: "123"});
-//	errorMyNumber(new Product());
+	checkMyNumberFromStorage();
 	if (checkDataStorage()) {
 		
 		initProductsSelectList();
@@ -52,6 +51,10 @@ $(document).ready(function () {
 	
 	$("#mainComment").change(function() {
 		updateCreateListFormComment();
+	});
+	
+	$("#myPhoneNumberSave").click(function() {
+		updateMyNumber();
 	});
 	
 	initTestsData();

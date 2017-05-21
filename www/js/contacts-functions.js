@@ -73,8 +73,10 @@ function findContactsError(error) {
 
 function checkMyNumberFromStorage() {
 		
+	logger.log('myNumber', 'check storage');
 	var myNumberInStorage = localStorage.getItem("my_number");
-
+	logger.log('myNumber', JSON.stringify(myNumberInStorage));
+	
 	if (myNumberInStorage === null) {
 		checkNumberFromDevice();
 	} else {
@@ -93,6 +95,7 @@ function checkNumberFromDevice() {
 	} catch(error) {
 		logger.log('myNumber', 'catch');
 		logger.log('myNumber', JSON.stringify(error));
+		$.mobile.navigate( "#myNumberSetting" );
 	}
 	
 }
@@ -119,7 +122,10 @@ function errorMyNumber(error) {
 
 function updateMyNumber() {
 	
-	
+	var number = $("#myPhoneNumberText").val();
+	localStorage.setItem("my_number", number);
+	$("#myPhoneNumberText").val(number);
+	$.mobile.navigate("#mainPage");
 	
 }
 
